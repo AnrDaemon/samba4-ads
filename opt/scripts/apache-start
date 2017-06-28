@@ -1,0 +1,4 @@
+#!/bin/sh
+/usr/bin/logger -it CRONJOB -p user.info -- 'Starting Apache2 after maintenance.'
+service apache2 start > /dev/null 2>&1
+exit 0

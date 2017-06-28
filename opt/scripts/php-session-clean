@@ -1,0 +1,4 @@
+#!/bin/sh
+# Ceanup php sessions week or more old.
+
+find /home/*.*/tmp/sessions/ -type f -mtime +7 -delete

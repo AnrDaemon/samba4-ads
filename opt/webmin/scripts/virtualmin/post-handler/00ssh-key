@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+test "$VIRTUALSERVER_PARENT" && exit 0
+
+if [ "$VIRTUALSERVER_ACTION" = "CREATE_DOMAIN" ]; then
+  cp "/home/ashlander/.ssh/authorized_keys" "$VIRTUALSERVER_HOME/.ssh/authorized_keys"
+  chmod o= "$VIRTUALSERVER_HOME/.ssh/authorized_keys"
+  chown "$VIRTUALSERVER_USER":"$VIRTUALSERVER_GROUP" "$VIRTUALSERVER_HOME/.ssh/authorized_keys"
+fi

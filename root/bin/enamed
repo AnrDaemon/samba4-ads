@@ -1,0 +1,150 @@
+#!/bin/sh
+# $Id: enamed 525 2016-06-28 09:03:58Z anrdaemon $
+
+getopt --test
+if [ $? -ne 4 ]; then
+	echo Enhanced 'getopt' package required. >&2
+	exit 4
+fi
+
+umask 0022
+
+# Fuck user's $PATH
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Find user's preferred editor. If possible.
+_editor="${FCEDIT:-${VISUAL:-${EDITOR:-$(which editor)}}}" || {
+  echo "Unable to find preferred editor."
+  echo "Either define VISUAL or EDITOR environment variable or install alternatives package."
+  exit 1
+} >&2
+
+# Find diff tool.
+_diff="$(which diff)" || {
+  echo "We need diff tool to work."
+  exit 1
+} >&2
+
+# Dump configuration.
+# dump_config file
+dump_config()
+{
+  /usr/sbin/named-checkzone -D -s full -- "$_name" "$1" 2> /dev/null
+}
+
+# Check the configuration file. Return 1 if errors.
+# check_config changed.file
+check_config()
+{
+  /usr/sbin/named-checkzone -m fail -M fail -n fail ${_verb:+-D} -- "$_name" "$1" || return 1
+}
+
+# Check for changes between two configuration files
+# check_changes original.file changed.file
+check_changes()
+{
+  dump_config "$2" | "$_diff" -q "$1" - > /dev/null
+}
+
+# Edit the file. Return 1 if there were changes. 2 if errors.
+edit_file()
+{
+  "$_editor" "$_edit"
+  check_config "$_edit" || return 2
+  check_changes "$_test" "$_edit"
+}
+
+ed_commit()
+{
+  cp --archive --backup=numbered "$_file" "${_file}-edit"
+  mv "$_edit" "$_file"
+}
+
+ed_cleanup()
+{
+  rm -f "$_edit" "$_test" || true
+  rndc thaw "$_name"
+}
+
+eval set -- $(getopt -o 'ehtv' --shell sh --longoptions 'edit,help,test,verbose' -- "$@")
+for i; do
+  case $i in
+    -e|--edit)
+      shift
+      ;;
+    -h|--help)
+      echo "Edit BIND zone configuration, with backups and sanity checking.
+
+$(basename $0) [ -e | -t ] [-v] [<zonename>]
+
+  -e,--edit - edit configuration
+  -t,--test - test configuration
+  -v,--verbose - verbose test output
+
+Default is \`edit'. Zone files are looked in \`/var/lib/bind/$zonename.hosts'."
+      exit 0
+      ;;
+    -t|--test)
+      _testOnly='yes'
+      shift
+      ;;
+    -v|--verbose)
+      _verb='--verbose'
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+done
+
+_name="${1:+$1.}"
+test "$_name" || {
+  echo "Please provide a zone name."
+  exit 1
+} >&2
+
+_file="/var/lib/bind/${_name}hosts"
+test -f "$_file" || {
+  echo "File does not exists or is a directory."
+  exit 1
+} >&2
+
+test "$_testOnly" && {
+  check_config $_file
+  exit $?
+}
+
+test -w "$_file" || {
+  echo "File is not writeable. Are you root?"
+  exit 1
+} >&2
+
+# Prepare to edit a config file.
+rndc freeze "$_name"; sleep 1
+_edit="$(mktemp "$_file.XXXXXXXX")"
+_test="$(mktemp "$_file.XXXXXXXX")"
+/bin/chown --reference="$_file" "$_edit" "$_test"
+/bin/chmod --reference="$_file" "$_edit" "$_test"
+
+cp "$_file" "$_edit"
+dump_config "$_edit" > "$_test"
+
+until edit_file "$_edit"; do
+  case $? in
+    1)
+      ed_commit
+      break
+      ;;
+    2)
+      echo "It appears, your configuration is not valid."
+      read -p "[E]dit again or [C]ancel?(edit): " REPLY
+      case $REPLY in
+        c*) break;;
+      esac
+      ;;
+  esac
+done
+
+ed_cleanup

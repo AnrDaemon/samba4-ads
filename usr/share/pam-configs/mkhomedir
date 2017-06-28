@@ -1,0 +1,8 @@
+Name: Homedir creation
+Default: yes
+Priority: 256
+Session-Type: Additional
+Session:
+	required	pam_mkhomedir.so	umask=0027
+Session-Initial:
+	required	pam_mkhomedir.so	umask=0027

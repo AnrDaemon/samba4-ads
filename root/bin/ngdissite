@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for host; do
+  _file="/etc/nginx/sites-enabled/$(basename "$host")"
+  [ -h "$_file" ] && {
+    rm "$_file"
+  }
+done

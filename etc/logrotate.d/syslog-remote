@@ -1,0 +1,17 @@
+# Syslog-remote
+/var/log/remote/*.log {
+	rotate 15
+	dateext
+	dateformat .%s
+	daily
+	minsize 1M
+	missingok
+	create 640 syslog adm
+	compress
+	delaycompress
+	nomail
+	postrotate
+		service rsyslog reload
+	endscript
+	sharedscripts
+}

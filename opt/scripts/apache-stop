@@ -1,0 +1,4 @@
+#!/bin/sh
+/usr/bin/logger -it CRONJOB -p user.info -- 'Stopping Apache2 before maintenance.'
+service apache2 stop > /dev/null 2>&1
+exit 0

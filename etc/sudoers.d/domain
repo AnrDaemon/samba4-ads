@@ -1,0 +1,4 @@
+# Members of the "domain admins" group may do about anything.
+# And rightfully so.
+%domain\x20admins ALL=(ALL:ALL) ALL
+%domain\x20sudoers ALL=(ALL:ALL) ALL

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for host; do
+  _file="$(readlink -en "/etc/nginx/sites-available/$(basename "$host")")"
+  [ "$_file" ] && [ -f "$_file" ] && {
+    ln -fst "/etc/nginx/sites-enabled/" "$_file"
+  }
+done

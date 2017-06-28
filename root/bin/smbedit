@@ -1,0 +1,153 @@
+#!/bin/sh
+# $Id: smbedit 611 2016-08-11 14:55:10Z anrdaemon $
+
+getopt --test
+if [ $? -ne 4 ]; then
+	echo Enhanced 'getopt' package required. >&2
+	exit 4
+fi
+
+umask 0022
+
+# Fuck user's $PATH
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Find user's preferred editor. If possible.
+_editor="${FCEDIT:-${VISUAL:-${EDITOR:-$(which editor)}}}" || {
+  echo "Unable to find preferred editor."
+  echo "Either define VISUAL or EDITOR environment variable or install alternatives package."
+  exit 1
+} >&2
+
+# Find diff tool.
+_diff="$( which diff )" || {
+  echo "We need diff tool to work."
+  exit 1
+} >&2
+
+# Dump configuration.
+# dump_config file
+dump_config()
+{
+  _check="$( mktemp -t smbedit.XXXXXXXX )"
+  if [ "$( which samba-tool )" ]; then
+    samba-tool testparm --suppress-prompt --configfile="$1" ${_verb:+--verbose} 2> "$_check"
+    _buff="$( cat "$_check" )"
+  else
+    testparm -s ${_verb:+-v} -- "$1" 2> "$_check"
+    _buff="$( egrep -v "^(Processing|Load|Server)" "$_check" )"
+  fi
+  rm "$_check"
+  test "$_buff" || return 0
+  echo "$_buff" >&2
+  return 1
+}
+
+# Check the configuration file. Return 1 if errors.
+# check_config changed.file
+check_config()
+{
+  dump_config "$1"
+}
+
+# Check for changes between two configuration files
+# check_changes original.file changed.file
+check_changes()
+{
+  dump_config "$2" | "$_diff" -q "$1" - > /dev/null
+}
+
+# Edit the file. Return 1 if there were changes. 2 if errors.
+edit_file()
+{
+  "$_editor" "$_edit"
+  check_config "$_edit" > /dev/null || return 2
+  check_changes "$_test" "$_edit"
+}
+
+ed_commit()
+{
+  cp --archive --backup=numbered "$_file" "${_file}-edit"
+  mv "$_edit" "$_file"
+  smbcontrol all reload-config
+}
+
+ed_cleanup()
+{
+  rm -f "$_edit" "$_test" || true
+}
+
+eval set -- $(getopt -o 'ehtv' --shell sh --longoptions 'edit,help,test,verbose' -- "$@")
+for i; do
+  case $i in
+    -e|--edit)
+      shift
+      ;;
+    -h|--help)
+      echo "Edit samba configuration, with backups and sanity checking.
+
+$(basename $0) [ -e | -t ] [-v] [<filename>]
+
+  -e,--edit - edit configuration
+  -t,--test - test configuration
+  -v,--verbose - verbose 'testparm' output
+
+Default is \`edit'. If no <filename> provided, edit \`/etc/samba/smb.conf'."
+      exit 0
+      ;;
+    -t|--test)
+      _testOnly='yes'
+      shift
+      ;;
+    -v|--verbose)
+      _verb='--verbose'
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+done
+
+_file="${1:-/etc/samba/smb.conf}"
+test -f "$_file" || {
+  echo "File does not exists or is a directory."
+  exit 1
+} >&2
+
+test "$_testOnly" && {
+  check_config "$_file"
+  exit $?
+}
+
+test -w "$_file" || {
+  echo "File is not writeable. Are you root?"
+  exit 1
+} >&2
+
+_edit="$(mktemp "$_file.XXXXXXXX")"
+_test="$(mktemp "$_file.XXXXXXXX")"
+/bin/chown --reference="$_file" "$_edit" "$_test"
+/bin/chmod --reference="$_file" "$_edit" "$_test"
+
+cp "$_file" "$_edit"
+dump_config "$_edit" > "$_test"
+
+until edit_file "$_edit"; do
+  case $? in
+    1)
+      ed_commit
+      break
+      ;;
+    2)
+      echo "It appears, your configuration is not valid."
+      read -p "[E]dit again or [C]ancel?(edit): " REPLY
+      case $REPLY in
+        c*) break;;
+      esac
+      ;;
+  esac
+done
+
+ed_cleanup

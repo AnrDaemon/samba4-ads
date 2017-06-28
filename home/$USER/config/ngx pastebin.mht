@@ -1,0 +1,294 @@
+Content-Type: multipart/related; start=<op.mhtml.1470392457890.928719370e3971a8@192.168.1.10>; boundary=----------5pn88QrBRiMgKFKrN1ugfQ
+Content-Location: https://p.ngx.cc/c7
+Subject: =?utf-8?Q?ngx=20pastebin?=
+MIME-Version: 1.0
+
+------------5pn88QrBRiMgKFKrN1ugfQ
+Content-Disposition: inline; filename=c7.htm
+Content-Type: text/html; charset=UTF-8; name=c7.htm
+Content-ID: <op.mhtml.1470392457890.928719370e3971a8@192.168.1.10>
+Content-Location: https://p.ngx.cc/c7
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ngx pastebin</title>
+    
+    <meta name="keywords" content="nginx, ngx, pastebin" />
+    <meta name="description" content="ngx cc pastebin service" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="google-site-verification" content="" />
+    <link type="text/css" rel="stylesheet" href="/static/css/site.css" media="all" />
+    
+  <style>.code .hll { background-color: #ffffcc }
+.code  { background: #f8f8f8; }
+.code .c { color: #408080; font-style: italic } /* Comment */
+.code .err { border: 1px solid #FF0000 } /* Error */
+.code .k { color: #008000; font-weight: bold } /* Keyword */
+.code .o { color: #666666 } /* Operator */
+.code .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.code .cp { color: #BC7A00 } /* Comment.Preproc */
+.code .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.code .cs { color: #408080; font-style: italic } /* Comment.Special */
+.code .gd { color: #A00000 } /* Generic.Deleted */
+.code .ge { font-style: italic } /* Generic.Emph */
+.code .gr { color: #FF0000 } /* Generic.Error */
+.code .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.code .gi { color: #00A000 } /* Generic.Inserted */
+.code .go { color: #888888 } /* Generic.Output */
+.code .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.code .gs { font-weight: bold } /* Generic.Strong */
+.code .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.code .gt { color: #0044DD } /* Generic.Traceback */
+.code .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.code .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.code .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.code .kp { color: #008000 } /* Keyword.Pseudo */
+.code .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.code .kt { color: #B00040 } /* Keyword.Type */
+.code .m { color: #666666 } /* Literal.Number */
+.code .s { color: #BA2121 } /* Literal.String */
+.code .na { color: #7D9029 } /* Name.Attribute */
+.code .nb { color: #008000 } /* Name.Builtin */
+.code .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.code .no { color: #880000 } /* Name.Constant */
+.code .nd { color: #AA22FF } /* Name.Decorator */
+.code .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.code .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.code .nf { color: #0000FF } /* Name.Function */
+.code .nl { color: #A0A000 } /* Name.Label */
+.code .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.code .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.code .nv { color: #19177C } /* Name.Variable */
+.code .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.code .w { color: #bbbbbb } /* Text.Whitespace */
+.code .mb { color: #666666 } /* Literal.Number.Bin */
+.code .mf { color: #666666 } /* Literal.Number.Float */
+.code .mh { color: #666666 } /* Literal.Number.Hex */
+.code .mi { color: #666666 } /* Literal.Number.Integer */
+.code .mo { color: #666666 } /* Literal.Number.Oct */
+.code .sb { color: #BA2121 } /* Literal.String.Backtick */
+.code .sc { color: #BA2121 } /* Literal.String.Char */
+.code .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.code .s2 { color: #BA2121 } /* Literal.String.Double */
+.code .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.code .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.code .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.code .sx { color: #008000 } /* Literal.String.Other */
+.code .sr { color: #BB6688 } /* Literal.String.Regex */
+.code .s1 { color: #BA2121 } /* Literal.String.Single */
+.code .ss { color: #19177C } /* Literal.String.Symbol */
+.code .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.code .vc { color: #19177C } /* Name.Variable.Class */
+.code .vg { color: #19177C } /* Name.Variable.Global */
+.code .vi { color: #19177C } /* Name.Variable.Instance */
+.code .il { color: #666666 } /* Literal.Number.Integer.Long */
+  .code { background: #ffffff;}</style>
+
+  </head>
+  <body>
+    <div id="header">
+      <a href="/">ngx pbin</a>|
+      <a href="http://ngx.cc/">ngx cc</a>
+      <ul id="menu">
+        <li><a href="/about">About</a></li>
+        <li><a href="/">New Paste</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      
+  <div class="bar">
+    <div class="title">
+      Title: <strong>Try N4</strong>
+    </div>
+    <div class="author">
+      Author: <strong>AnrDaemon</strong>
+    </div>
+  </div>
+  <div class="paste">
+    <table class="pastetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre></div></td><td class="code"><div class="paste"><pre><span class="k"><a href="http://ngx.cc/r/server" target="_blank">server</a></span> <span class="p">{</span>
+    <span class="kn"><a href="http://ngx.cc/r/listen" target="_blank">listen</a></span>       <span class="mi">80</span><span class="p">;</span>
+    <span class="kn"><a href="http://ngx.cc/r/server_name" target="_blank">server_name</a></span>  <span class="s">@USER@.rootdir.org</span> <span class="s">@USER@.darkdragon.lan</span><span class="p">;</span>
+
+    <span class="c1"># RealIP config</span>
+    <span class="kn"><a href="http://ngx.cc/r/include" target="_blank">include</a></span> <span class="s">extra/proxy_upstream</span><span class="p">;</span>
+
+    <span class="c1"># Local filter block.</span>
+    <span class="c1">#include extra/access_local;</span>
+
+    <span class="c1"># Block access to VCS dirs.</span>
+    <span class="kn"><a href="http://ngx.cc/r/include" target="_blank">include</a></span> <span class="s">extra/access_vcs</span><span class="p">;</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/access_log" target="_blank">access_log</a></span> <span class="s">&quot;@HOME@/logs/access.log&quot;</span> <span class="s">combined</span><span class="p">;</span>
+    <span class="kn"><a href="http://ngx.cc/r/error_log" target="_blank">error_log</a></span>  <span class="s">&quot;@HOME@/logs/error.log&quot;</span> <span class="s">warn</span><span class="p">;</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/charset" target="_blank">charset</a></span> <span class="s">UTF-8</span><span class="p">;</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/add_header" target="_blank">add_header</a></span> <span class="s">&quot;X-UA-Compatible&quot;</span> <span class="s">&quot;IE=edge&quot;</span> <span class="s">always</span><span class="p">;</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/root" target="_blank">root</a></span>   <span class="s">&quot;@HOME@/htdocs&quot;</span><span class="p">;</span>
+    <span class="kn"><a href="http://ngx.cc/r/index" target="_blank">index</a></span>  <span class="s">index.php</span> <span class="s">index.html</span><span class="p">;</span>
+    <span class="kn"><a href="http://ngx.cc/r/try_files" target="_blank">try_files</a></span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+
+    <span class="c1">#autoindex on;</span>
+
+    <span class="c1">#~darkdragon/htdocs/.test/.htaccess</span>
+    <span class="c1">#~darkdragon/htdocs/images/LA2/.htaccess</span>
+    <span class="c1">#~darkdragon/htdocs/special/.htaccess</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="s">/audio/</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/autoindex" target="_blank">autoindex</a></span> <span class="no">on</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="s">^~</span> <span class="s">/wiki/files/perpage/</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/deny" target="_blank">deny</a></span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="p">~</span> <span class="sr">^/wiki/themes/[^/]+/(?:appearance|lang)/</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/deny" target="_blank">deny</a></span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="p">~</span> <span class="sr">^/wiki/(_cache|actions|classes|db|formatters|handlers|lang|lib)/</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/deny" target="_blank">deny</a></span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="s">/wiki/</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/index" target="_blank">index</a></span> <span class="s">wakka.php</span><span class="p">;</span>
+        <span class="kn"><a href="http://ngx.cc/r/try_files" target="_blank">try_files</a></span> <span class="nv">$uri</span> <span class="s">@wakka</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="s">@wakka</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/rewrite" target="_blank">rewrite</a></span> <span class="s">^/wiki/(.+)</span>$ <span class="s">/wiki/wakka.php?wakka=</span><span class="nv">$1&amp;$args</span> <span class="s">last</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="s">/</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1"># pass the PHP scripts to FastCGI server</span>
+    <span class="c1">#</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="p">~</span> <span class="sr">[^/]\.(?:php|html)(/|$)</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/include" target="_blank">include</a></span>        <span class="s">extra/fastcgi_php_fpm</span><span class="p">;</span>
+
+        <span class="kn"><a href="http://ngx.cc/r/fastcgi_param" target="_blank">fastcgi_param</a></span>  <span class="s">SERVER_ADMIN</span>     <span class="s">&quot;@USER@@rootdir.org&quot;</span><span class="p">;</span>
+        <span class="kn"><a href="http://ngx.cc/r/fastcgi_param" target="_blank">fastcgi_param</a></span>  <span class="s">SERVER_SIGNATURE</span> <span class="s">&quot;&lt;address&gt;nginx/</span><span class="nv">$nginx_version</span> <span class="s">server</span> <span class="s">at</span> <span class="nv">$http_host</span> <span class="s">port</span> <span class="nv">$server_port&lt;/address&gt;&quot;</span><span class="p">;</span>
+        <span class="kn"><a href="http://ngx.cc/r/fastcgi_param" target="_blank">fastcgi_param</a></span>  <span class="s">SERVER_NAME</span>      <span class="nv">$http_host</span><span class="p">;</span>
+        <span class="c1">#fastcgi_param  PHP_ADMIN_VALUE  &quot;auto_prepend_file=&#39;@HOME@/inc/sitemove.php&#39;&quot;;</span>
+
+        <span class="kn"><a href="http://ngx.cc/r/fastcgi_pass" target="_blank">fastcgi_pass</a></span>   <span class="mi">127</span><span class="s">.8.0.1:@UID@</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">#error_page  404              /404.html;</span>
+
+    <span class="c1"># redirect server error pages to the static page /50x.html</span>
+    <span class="c1">#</span>
+    <span class="kn"><a href="http://ngx.cc/r/error_page" target="_blank">error_page</a></span>   <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span>  <span class="s">/50x.html</span><span class="p">;</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="p">=</span> <span class="s">/50x.html</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/root" target="_blank">root</a></span>   <span class="s">/usr/share/nginx/html</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># deny access to .ht* files</span>
+    <span class="kn"><a href="http://ngx.cc/r/location" target="_blank">location</a></span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+        <span class="kn"><a href="http://ngx.cc/r/deny" target="_blank">deny</a></span>  <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+  </div>
+  <div class="bar">
+    <div class="syntax">
+      Syntax: <strong>nginx</strong>
+    </div>
+    <div class="options">
+      <a href="/r/c7">Raw</a>
+    </div>
+    
+    <div class="options">
+      <a href="/f/c7">Fork</a>&nbsp;|&nbsp;
+    </div>
+  </div>
+
+    </div>
+  </body>
+</html>
+------------5pn88QrBRiMgKFKrN1ugfQ--

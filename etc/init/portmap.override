@@ -1,0 +1,12 @@
+# rpcbind - RPC portmapper replacement
+# Startup script override to avoid cold start warnings
+
+script
+	test -e /run/rpcbind/portmap.xdr -a -e /run/rpcbind/rpcbind.xdr && OPTIONS="-w"
+	if [ -f /etc/default/rpcbind ]; then
+		. /etc/default/rpcbind
+	elif [ -f /etc/rpcbind.conf ]; then
+		. /etc/rpcbind.conf
+	fi
+	exec rpcbind $OPTIONS
+end script

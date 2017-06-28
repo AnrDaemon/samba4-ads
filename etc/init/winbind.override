@@ -1,0 +1,3 @@
+env WINBINDD_OPTS
+
+exec /usr/sbin/winbindd -F $WINBINDD_OPTS

@@ -1,0 +1,18 @@
+#deflogin
+vbell off
+defutf8 on on
+altscreen on
+crlf off
+
+#attrcolor b ".."
+term "screen-256color"
+termcapinfo *-256color* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+
+#TITLES (naming windows)
+defdynamictitle on
+shelltitle "$ |bash"
+
+bind W windowlist
+bind k
+bind ^k

@@ -1,0 +1,6 @@
+# Depends: dav_svn
+Include mods-enabled/dav.load
+Include mods-enabled/dav_fs.load
+Include mods-enabled/dav_svn.load
+
+LoadModule authz_svn_module /usr/lib/apache2/modules/mod_authz_svn.so

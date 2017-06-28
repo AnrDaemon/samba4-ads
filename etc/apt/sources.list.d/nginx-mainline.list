@@ -1,0 +1,5 @@
+# Official nginx mainline repo
+# Key: http://nginx.org/keys/nginx_signing.key
+# Ref: http://nginx.org/ru/linux_packages.html#stable
+deb http://nginx.org/packages/ubuntu/ trusty nginx
+deb-src http://nginx.org/packages/ubuntu/ trusty nginx

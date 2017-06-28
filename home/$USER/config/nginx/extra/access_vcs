@@ -1,0 +1,3 @@
+location ~* /(CVS|\.svn)/ {
+    return 403;
+}

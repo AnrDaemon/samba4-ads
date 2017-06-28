@@ -1,0 +1,4 @@
+# Raise open files limit
+# Ref: http://serverfault.com/questions/440878/changing-open-files-limit-in-mysql-5-5
+limit nofile 32000 32000
+limit nproc 32000 32000

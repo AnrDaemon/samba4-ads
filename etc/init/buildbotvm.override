@@ -1,0 +1,21 @@
+## VirtualBox upstart overrides
+# System user VirtualBox is configured for.
+# If you are not using suggested practice of setting up service VM's
+# under single dedicated account, you will need to change it.
+setuid virtualbox
+# System group allowed to start vbox'es, usually 'vboxusers'.
+setgid vboxusers
+
+## Set environment variables to appropriate values
+# User home directory
+env HOME="/var/lib/virtualbox"
+# VM name to start
+env VM="BuildBotW7"
+
+# Change this line to point to the same dir as $HOME
+# Upstart does not support variable expansion here.
+chdir "/var/lib/virtualbox"
+
+# Remove this line and everything below to unblock the job autostart,
+# once it works as expected.
+manual

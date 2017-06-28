@@ -1,0 +1,4 @@
+touch /etc/postfix/virtual
+postmap hash:/etc/postfix/virtual
+echo 'virtual_alias_maps = hash:/etc/postfix/virtual' >> /etc/postfix/main.cf
+service postfix restart

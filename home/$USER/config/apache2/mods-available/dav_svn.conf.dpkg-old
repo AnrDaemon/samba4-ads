@@ -1,0 +1,9 @@
+<IfModule dav_svn_module>
+#    SVNParentPath C:/home/svn
+    <IfModule log_config_module>
+        # Custom log format for SVN actions
+        # Time format: 2004-02-12T15:19:21+00:00
+        LogFormat "%{%Y-%m-%dT%T}t	svn:%{SVN-REPOS-NAME}e	%u@%h	%>s	%{SVN-ACTION}e" svn
+    </IfModule>
+</IfModule>
+

@@ -1,0 +1,2 @@
+#!/bin/sh
+mount | sed -re "s/^(proc|sysfs|udev) on (\/[a-z]+) type ([a-z]+) .+/mount -t \3 \1 \/mnt\2/" | grep mount

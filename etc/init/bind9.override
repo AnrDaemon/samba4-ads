@@ -1,0 +1,2 @@
+env OPTIONS="-4u bind"
+env RESOLVCONF=yes

@@ -1,0 +1,2 @@
+start on started bind9 and (started isc-dhcp-server or started isc-dhcp-server6)
+console log

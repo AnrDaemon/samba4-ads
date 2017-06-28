@@ -1,0 +1,3 @@
+expect none
+
+exec nmbd -F

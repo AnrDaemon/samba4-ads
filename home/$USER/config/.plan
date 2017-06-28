@@ -1,0 +1,12 @@
+Implement send-as-is wrapper.
+
+Configure explicit default_server not matching any of your actual hosts.
+
+pubserver: sort the uplinks routing
+
+host:
+  PID  PPID TTY      STAT     TIME COMMAND
+ 1401     1 ?        Ss   00:00:00 /usr/bin/stunnel4 /etc/stunnel/yandex-smtps.init
+ 1764     1 ?        Ssl  00:00:00 /usr/sbin/3proxy /etc/3proxy/3proxy.conf
+ 1794     1 ?        Ss   00:00:00 /usr/sbin/dhcpd -f -q -4 -pf /run/dhcp-server/dhcpd.pid -cf /etc/dhcp/dhcpd.conf mac0 mac1
+ 1527     1 ?        Ssl  00:00:00 /usr/sbin/named -4u bind

@@ -1,0 +1,9 @@
+## WebMin APT repository
+# Ref: http://webmin.com/deb.html
+# Key: http://software.virtualmin.com/lib/RPM-GPG-KEY-webmin
+deb http://download.webmin.com/download/repository sarge contrib
+
+## Virtualmin APT repository
+# No idea, where did I find it.
+# Key: http://software.virtualmin.com/lib/RPM-GPG-KEY-virtualmin
+deb http://software.virtualmin.com/gpl/ubuntu/ virtualmin-universal main

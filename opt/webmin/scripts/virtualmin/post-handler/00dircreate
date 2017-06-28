@@ -1,0 +1,21 @@
+#!/bin/sh
+
+make_new_dir(){
+  test "$1" || return 1
+  test -d "$1" || {
+    mkdir "$1" || return 1
+    chmod -R o= "$1"
+    chown -R "$VIRTUALSERVER_USER":"$VIRTUALSERVER_GROUP" "$1"
+  }
+}
+
+set -e
+
+test "$VIRTUALSERVER_PARENT" && exit 0
+
+if [ "$VIRTUALSERVER_ACTION" = "CREATE_DOMAIN" ]; then
+  cd "$VIRTUALSERVER_HOME"
+  make_new_dir '.ssh'
+  make_new_dir 'tmp'
+  make_new_dir 'tmp/sessions'
+fi
