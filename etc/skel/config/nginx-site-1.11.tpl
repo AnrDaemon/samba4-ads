@@ -3,7 +3,7 @@ server {
 
     listen 80;
 
-    #listen 443 ssl;
+    #listen 443 ssl http2;
     #ssl_certificate "@HOME@/.ssh/@USER@.crt";
     #ssl_certificate_key "@HOME@/.ssh/@USER@.key";
 
