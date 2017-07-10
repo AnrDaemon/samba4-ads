@@ -1,0 +1,153 @@
+error_page 400 /error-400-;
+location = /error-400- {
+    internal;
+    default_type text/html;
+    return 400 "<!DOCTYPE html>
+<html><head>
+<title>400 Bad request</title>
+</head><body><h1>Bad request</h1>
+<p>Your request deemed unacceptable and was not processed.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 401 /error-401-;
+location = /error-401- {
+    internal;
+    default_type text/html;
+    return 401 "<!DOCTYPE html>
+<html><head>
+<title>401 Unauthorized</title>
+</head><body><h1>Unauthorized</h1>
+<p>Your request were not authorized to proceed.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 403 /error-403-;
+location = /error-403- {
+    internal;
+    default_type text/html;
+    return 403 "<!DOCTYPE html>
+<html><head>
+<title>403 Forbidden</title>
+</head><body><h1>Forbidden</h1>
+<p>Your request was forbidden.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 404 /error-404-;
+location = /error-404- {
+    internal;
+    default_type text/html;
+    return 404 "<!DOCTYPE html>
+<html><head>
+<title>404 Not found</title>
+</head><body><h1>Not found</h1>
+<p>Whatever you were looking for was not found.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 405 /error-405-;
+location = /error-405- {
+    internal;
+    default_type text/html;
+    return 405 "<!DOCTYPE html>
+<html><head>
+<title>405 Method not allowed</title>
+</head><body><h1>Method not allowed</h1>
+<p>Your actions were not tolerated by the server.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 415 /error-415-;
+location = /error-415- {
+    internal;
+    default_type text/html;
+    return 415 "<!DOCTYPE html>
+<html><head>
+<title>415 Unsupported media type</title>
+</head><body><h1>Unsupported media type</h1>
+<p>The payload you sent was unacceptable.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 500 /error-500-;
+location = /error-500- {
+    internal;
+    default_type text/html;
+    return 500 "<!DOCTYPE html>
+<html><head>
+<title>500 Internal server error</title>
+</head><body><h1>Internal server error</h1>
+<p>The server was unable to finish your request due to an internal error.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 501 /error-501-;
+location = /error-501- {
+    internal;
+    default_type text/html;
+    return 501 "<!DOCTYPE html>
+<html><head>
+<title>501 Not implemented</title>
+</head><body><h1>Not implemented</h1>
+<p>The requested service is not implemented.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 502 /error-502-;
+location = /error-502- {
+    internal;
+    default_type text/html;
+    return 502 "<!DOCTYPE html>
+<html><head>
+<title>502 Bad gateway</title>
+</head><body><h1>Bad gateway</h1>
+<p>Gateway configuration issue prevented completion of your request.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 503 /error-503-;
+location = /error-503- {
+    internal;
+    default_type text/html;
+    return 503 "<!DOCTYPE html>
+<html><head>
+<title>503 Service unavailable</title>
+</head><body><h1>Service unavailable</h1>
+<p>The requested service is not currently available.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}
+
+error_page 504 /error-504-;
+location = /error-504- {
+    internal;
+    default_type text/html;
+    return 504 "<!DOCTYPE html>
+<html><head>
+<title>504 Gateway timeout</title>
+</head><body><h1>Gateway timeout</h1>
+<p>A response from upstrem server was not received in time.</p>
+<hr/>
+<address>nginx/$nginx_version server at $host port $server_port</address>
+</body></html>";
+}

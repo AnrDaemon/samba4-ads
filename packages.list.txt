@@ -1,0 +1,29 @@
+# Parameters passed to the template: --release=trusty --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,cifs-utils,krb5-user,libnss-winbind,libpam-krb5,smbclient,samba-vfs-modules
+Postpone: ssmtp mailutils
+
+acl
+aptitude
+attr
+bash-completion
+curl
+dnsutils
+htop
+iptables
+mailutils
+man-db
+mc
+nano
+ncurses-term
+patch
+screen
+software-properties-common
+ssl-cert
+ssmtp
+tcpdump
+wget
+cifs-utils krb5-user libnss-winbind libpam-krb5 smbclient samba-vfs-modules
+
+linux-generic-lts-xenial
+webmin
+
+build-essential devscripts fakeroot debhelper
