@@ -20,7 +20,7 @@ location = /error-401- {
 <html><head>
 <title>401 Unauthorized</title>
 </head><body><h1>Unauthorized</h1>
-<p>Your request were not authorized to proceed.</p>
+<p>Your request was not authorized to proceed.</p>
 <hr/>
 <address>nginx/$nginx_version server at $host port $server_port</address>
 </body></html>";
@@ -76,7 +76,7 @@ location = /error-415- {
 <html><head>
 <title>415 Unsupported media type</title>
 </head><body><h1>Unsupported media type</h1>
-<p>The payload you sent was unacceptable.</p>
+<p>The payload you sent was found unacceptable.</p>
 <hr/>
 <address>nginx/$nginx_version server at $host port $server_port</address>
 </body></html>";
