@@ -1,6 +1,8 @@
 # Only allow local network(s).
 # Block everything else.
-allow 192.168.1.0/27;
 allow 127.0.0.0/8;
+allow 10.0.0.0/8;
+allow 172.16.0.0/12;
+allow 192.168.0.0/16;
 
 deny all;
