@@ -1,3 +1,4 @@
+alias diff='diff -burd'
       acl(){ /usr/bin/getfacl "${1-.}" "${@:2}";}; readonly -f acl
       inscreen(){
         screen -q -ls
