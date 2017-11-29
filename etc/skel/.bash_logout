@@ -4,5 +4,5 @@
 
 if [ "$SHLVL" = 1 ]; then
     [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
-    [ -x "/usr/local/bin/histpurge.php" ] && "/usr/local/bin/histpurge.php"
+    [ -x "/usr/local/bin/histpurge" ] && "/usr/local/bin/histpurge"
 fi
