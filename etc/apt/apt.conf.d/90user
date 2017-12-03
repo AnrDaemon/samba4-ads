@@ -2,6 +2,7 @@
 
 APT::Install-Recommends "0";
 APT::Install-Suggests "0";
+//APT::Default-Release "trusty-backports";
 APT::Get::Install-Recommends "0";
 APT::Get::Install-Suggests "0";
-//APT::Default-Release "trusty-backports";
+//APT::Get::Default-Release "trusty-backports";
