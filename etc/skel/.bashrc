@@ -11,6 +11,7 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 # ... and ignore same successive entries.
+export HISTIGNORE="clear:cd *:history *:man *:nano *"
 export HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
@@ -115,6 +116,13 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  fi
+
+  # Import user's bash-completion hooks
+  if [ -d "$HOME/.completion.bash" ] ; then
+    for file in "$HOME/.completion.bash"/*; do
+      [ -e "$file" ] && . "$file"
+    done
   fi
 fi
 
