@@ -12,7 +12,7 @@ _importkeys() # $user $destdir
     test ! -L "$_h/.ssh/authorized_keys"
     test ! -e "$2/$_n"
     cp "$_h/.ssh/authorized_keys" "$2/$_n"
-    chown "$_u" "$2/$_n"
+    chown "$_u:nogroup" "$2/$_n"
     ln -fs "$2/$_n" "$_h/.ssh/authorized_keys"
   done
 )
@@ -30,6 +30,8 @@ else
     done
   done
 fi
+
+chmod u=rw,go= "$KEYSDIR/"*
 
 sshd -T | grep -qiE "AuthorizedKeysFile[[:space:]]$KEYSDIR/%u" || {
   echo "Adjust your /etc/ssh/sshd_config to include"
