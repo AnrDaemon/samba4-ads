@@ -35,6 +35,8 @@
 	idmap config @WORKGROUP@ : backend = ad
 	idmap config @WORKGROUP@ : schema_mode = rfc2307
 	idmap config @WORKGROUP@ : range = 2048-131071
+	idmap config @WORKGROUP@ : unix_primary_group = yes
+	idmap config @WORKGROUP@ : unix_nss_info = yes
 
 #	log level = 3 smb:0 auth:0 winbind:10 passdb:0 tdb:0 sam:0 idmap:10
 #	log level = 3 smb:5 auth:5 winbind:0 passdb:0 tdb:0 sam:5 idmap:0
