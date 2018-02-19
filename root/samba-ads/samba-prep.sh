@@ -98,3 +98,5 @@ fi > "./smb.conf"
 < "./krb5.conf.tpl" sed -e "
     s*@REALM@*$( printf "%s" "$_realm" | tr '[:lower:]' '[:upper:]' )*g;
 " > "./krb5.conf"
+
+cp nsswitch.conf.tpl nsswitch.conf
