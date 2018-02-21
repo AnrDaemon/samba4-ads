@@ -7,6 +7,7 @@
 passwd:         compat winbind
 group:          compat winbind
 shadow:         compat
+gshadow:        files
 
 hosts:          files dns
 networks:       files
