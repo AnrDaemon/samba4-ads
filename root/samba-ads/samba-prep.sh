@@ -17,7 +17,72 @@ test -r "./krb5.conf.tpl" -a ! -d "./krb5.conf.tpl" || {
 
 _get_help()
 {
-  echo "Help."
+  _hostname="${_hostname:-MACHINE}"
+  _realm="${_realm:-ADS.EXAMPLE.LAN}"
+  echo "This is a very simple domain join preparation template set.
+It does not do anything, doesn't touch any system configuration, all it does
+is preparing some files from initial templates.
+
+The usage is simple:
+1. Copy the directory to the target system (f.e. \`/root/samba-ads');
+2. Call this script:
+
+    samba-prep.sh { -H | -V }
+    samba-prep.sh [--role=MS] [--host=<hostname>] [--realm=<KRB5_REALM>]
+        [--] <DOMAINNAME>
+    samba-prep.sh --role=DC [--host=<hostname>] [--realm=<KRB5_REALM>]
+        [--dns=<DNS_MASTER>] [--] <DOMAINNAME>
+
+    -H      - this help.
+    -V      - tool version.
+    --role  - server role - MS(Member Server) or DC(Domain Controller),
+        defaults to \`MS'.
+    --host  - the hostname, i.e. \`$_hostname'. Defaults to using system name.
+        It is written in the config commented out. Do not uncomment it, unless
+        the system does not work right.
+        Which would indicate that hostname/hosts is not setup correctly and
+        should be fixed in there instead.
+    --realm - Kerberos version 5 realm name. Fully qualified domain name, i.e.
+        \`$_realm'.
+    --dns   - parent DNS server IP. Effective for domain controller only.
+
+    <DOMAINNAME> is a domain (workgroup) short name, i.e. \`EXAMPLE'.
+
+If only domain short name is provided, these settings will be in effect:
+
+    role=MS, host=\$(hostname -s), realm=ADS.<domain short name>.LAN
+
+
+Once $( _get_help_finished help )"
+}
+
+_get_help_finished()
+{
+  test "$1" || {
+    printf "Now, that " ""
+  }
+  echo "files are generated, move them to their rightful places:
+
+    nsswitch.conf -> /etc/nsswitch.conf
+    krb5.conf -> /etc/krb5.conf
+    smb.conf -> /etc/samba/smb.conf
+
+Make sure your /etc/hosts file contains proper local resolution record:
+
+    $( echo 127.0.1.1 ${_hostname}.${_realm} ${_hostname} | tr '[:upper:]' '[:lower:]' )
+
+..and that your /etc/hostname contains either...
+
+    $( echo ${_hostname}.${_realm} or just ${_hostname} | tr '[:upper:]' '[:lower:]' )
+
+...and that local resolver is able to reach domain DNS zone.
+
+Stop Samba daemons (nmbd, smbd, winbibnd).
+Purge /var/lib/samba/private/ (do NOT remove directory itself).
+Call \`net ads join -U <Your admin user>' or provision your domain.
+Don't forget to switch over startup scripts, if you were provisioning anew.
+Finally, reboot the stuff or simply start the service(s).
+"
 }
 
 _clean_value() # $allowedChars $string
@@ -100,3 +165,5 @@ fi > "./smb.conf"
 " > "./krb5.conf"
 
 cp nsswitch.conf.tpl nsswitch.conf
+
+_get_help_finished
