@@ -1,6 +1,7 @@
 #!/bin/sh
 
 test -d .ssh || exit 2
+test -f .ssh/authorized_keys || touch .ssh/authorized_keys
 
 USER="${PWD#/home/}"
 
