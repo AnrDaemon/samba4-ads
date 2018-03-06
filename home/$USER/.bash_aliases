@@ -10,7 +10,12 @@ alias diff='diff -burd'
       }; readonly -f inscreen
 alias lld='ls -ld'
       xat(){
-        eval $(inscreen -t "LXC:$*") sudo lxc-attach -n \"\${1:-dc1}\" -- sudo -i \"\${@:2}\"
+        if [ "$2" = "-u" ]; then
+          if [ "$#" -lt 3 ]; then
+            set -- "$@" "$USER"
+          fi
+        fi
+        eval $(inscreen -t "LXC:$*") sudo lxc-attach -n \"\${1:-dc1}\" -- su - \"\$3\"
       }; readonly -f xat
 alias xsc='screen -aDR "main"'
       xsu(){
