@@ -10,7 +10,7 @@
 
 export SSH_PEER_ADDR="${SSH_CLIENT%%\ *}"
 export RAR='-idcdp -mdg -m4 -s'
-export EDITOR=/usr/bin/nano
+export EDITOR="$( PATH=/usr/local/bin:/usr/bin:/bin which nano )"
 
 test -r "$HOME/.locale" && {
     while read -r L; do
@@ -56,4 +56,4 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-mesg n
+mesg n || true
