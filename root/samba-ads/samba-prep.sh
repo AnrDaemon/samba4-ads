@@ -15,6 +15,11 @@ test -r "./krb5.conf.tpl" -a ! -d "./krb5.conf.tpl" || {
   exit 3
 } >&2
 
+_get_version()
+{
+  echo "AD template set v1.0"
+}
+
 _get_help()
 {
   _hostname="${_hostname:-MACHINE}"
@@ -99,7 +104,7 @@ for opt; do
       exit 0
       ;;
     "-V")
-      echo "Version."
+      _get_version
       exit 0
       ;;
     "--role")
