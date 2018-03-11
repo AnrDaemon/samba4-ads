@@ -32,6 +32,18 @@ test -r "$HOME/.environment" && {
     done < "$HOME/.environment"
 }
 
+which screen > /dev/null && {
+    screen -q -ls
+    if [ $? -gt 10 ]; then
+        read -p "$(tput setaf 2)Found a running SCREEN sesion, attach?$(tput sgr0)[Y/n] " y >&2
+        if [ "${y:-y}" = "y" -o "$y" = "Y" ]; then
+            screen -aDR
+        fi
+    else
+        echo "$(tput setaf 3)No running SCREEN sessions found.$(tput sgr0)" >&2
+    fi
+}
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -41,6 +53,9 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    export PATH="$HOME/bin:$PATH"
 fi

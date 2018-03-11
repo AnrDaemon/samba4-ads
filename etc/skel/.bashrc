@@ -60,19 +60,19 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\e[0m\]${debian_chroot:+(\[\e[1;36m\]$debian_chroot\[\e[0m\])}\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[32m\]${TERM%%-*}\[\e[0m\]: \[\e[1;33m\]\w\[\e[0m\ek\e\\\a\]\n\$ '
+    PS1='\[$(tput sgr0)\]${debian_chroot:+(\[$(tput setaf 14)\]$debian_chroot\[$(tput sgr0)\])}\[$(tput setaf 10)\]\u@\h\[$(tput sgr0)\]:\[$(tput setaf 2)\]${TERM%%-*}${WINDOW+&$WINDOW}\[$(tput sgr0)\]:\[$(tput setaf 12)\]\w\[$(tput sgr0)\ek\e\\\a\]\n\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:${TERM%%-*}: \w\[\ek\e\\\]\a\n\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:${TERM%%-*}${WINDOW+&$WINDOW}:\w\ek\e\\\a\n\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 putty*)
-    PROMPT_COMMAND='printf "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: $(iconv -t CP1251 <<<"${PWD/$HOME/~}")\a"'
+    PROMPT_COMMAND='printf "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: $(iconv -t CP1251 <<<"${PWD/$HOME/\~}")\a"'
     ;;
 screen*|xterm*|rxvt*)
-    PROMPT_COMMAND='printf "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: ${PWD/$HOME/~}\a"'
+    PROMPT_COMMAND='printf "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: ${PWD/$HOME/\~}\a"'
     ;;
 *)
     ;;
