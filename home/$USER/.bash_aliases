@@ -11,11 +11,15 @@ alias diff='diff -burd'
 alias lld='ls -ld'
       xat(){
         if [ "$2" = "-u" ]; then
-          if [ "$#" -lt 3 ]; then
-            set -- "$@" "$USER"
+          _host="$1"
+          shift 2
+          if [ "$1" ]; then
+            set -- "$_host" "$@"
+          else
+            set -- "$_host" "$USER"
           fi
         fi
-        eval $(inscreen -t "LXC:$*") sudo lxc-attach -n \"\${1:-dc1}\" -- su - \"\$3\"
+        eval $(inscreen -t "LXC:$*") sudo lxc-attach -n \"\${1:-dc1}\" -- su -l \"\${@:2}\"
       }; readonly -f xat
 alias xsc='screen -aDR "main"'
       xsu(){
