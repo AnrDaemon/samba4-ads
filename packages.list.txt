@@ -1,4 +1,4 @@
-LXC Container template: --release=xenial --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,cifs-utils,krb5-user,libnss-winbind,libpam-krb5,smbclient,samba-dsdb-modules,samba-vfs-modules
+LXC Container template: --release=xenial --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,cifs-utils,krb5-user,libnss-winbind,libpam-winbind,smbclient,samba-dsdb-modules,samba-vfs-modules
 Postpone: ssmtp mailutils
 
 acl
@@ -9,7 +9,6 @@ curl
 dnsutils
 htop
 iptables
-mailutils
 man-db
 mc
 nano
@@ -18,18 +17,21 @@ patch
 screen
 software-properties-common
 ssl-cert
-ssmtp
 tcpdump
 wget
 
+mailutils
+ssmtp
+
 cifs-utils
 krb5-user
-ldb-tools
 libnss-winbind
-libpam-krb5
+libpam-winbind
 smbclient
 samba-dsdb-modules
 samba-vfs-modules
+
+ldb-tools
 
 linux-generic-lts-xenial
 webmin

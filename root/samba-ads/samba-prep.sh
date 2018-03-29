@@ -82,7 +82,7 @@ Make sure your /etc/hosts file contains proper local resolution record:
 
 ...and that local resolver is able to reach domain DNS zone.
 
-Stop Samba daemons (nmbd, smbd, winbibnd).
+Stop Samba daemons (nmbd, smbd, winbind).
 Purge /var/lib/samba/private/ (do NOT remove directory itself).
 Call \`net ads join -U <Your admin user>' or provision your domain.
 Don't forget to switch over startup scripts, if you were provisioning anew.

@@ -1,4 +1,5 @@
 ppa:ubuntu-lxc/stable
 ppa:ondrej/php
 ppa:ondrej/apache2
-ppa:linux-schools/backports
+ppa:webupd8team/java
+#ppa:linux-schools/backports
