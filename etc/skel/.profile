@@ -32,7 +32,7 @@ test -r "$HOME/.environment" && {
     done < "$HOME/.environment"
 }
 
-which screen > /dev/null && {
+[ "$( which screen 2> /dev/null )" ] && {
     screen -q -ls
     if [ $? -gt 10 ]; then
         read -p "$(tput setaf 2)Found a running SCREEN sesion, attach?$(tput sgr0)[Y/n] " y >&2

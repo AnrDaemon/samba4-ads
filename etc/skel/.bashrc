@@ -8,18 +8,16 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-# ... and ignore same successive entries.
+# don't put duplicate lines in the history. See bash(1) for more options
+#export HISTCONTROL=ignoredups
 export HISTIGNORE="clear:cd *:history *:man *:nano *"
 export HISTCONTROL=ignoreboth:erasedups
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -39,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    *color*) color_prompt=yes;;
 esac
 test "$( tput colors )" -ge 8 && color_prompt=yes
 
@@ -85,9 +83,9 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     #alias dir='ls --color=auto --format=vertical'
     #alias vdir='ls --color=auto --format=long'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
@@ -121,9 +119,12 @@ if ! shopt -oq posix; then
   # Import user's bash-completion hooks
   if [ -d "$HOME/.completion.bash" ] ; then
     for file in "$HOME/.completion.bash"/*; do
-      [ -e "$file" ] && . "$file"
+      [ -f "$file" ] && . "$file"
     done
   fi
 fi
+
+# Import ssh agent settings
+test -r "$HOME/.ssh/agent" && . "$HOME/.ssh/agent"
 
 __set_prompt

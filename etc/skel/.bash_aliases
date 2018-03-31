@@ -1,23 +1,21 @@
 alias diff='diff -burd'
       acl(){ /usr/bin/getfacl "${1-.}" "${@:2}";}; readonly -f acl
+alias e='${VISUAL:-${EDITOR:-${SELECTED_EDITOR:?"Define VISUAL or EDITOR environment variable!"}}} '
       inscreen(){
         screen -q -ls
         if [ $? -gt 10 ] && screen -S "main" -X select . 2> /dev/null 1>&2 ; then
-          printf 'screen -S "main" -X screen'
-          printf ' "%s"' "$@"
-          printf ' --'
+          printf 'screen -S "main" -X screen '
+          printf "'%s' " "$@" "--"
         fi
       }; readonly -f inscreen
 alias lld='ls -ld'
 alias xsc='screen -aDR "main"'
-      xsh(){
-        eval $(inscreen -t "SSH:$*") ssh "$@"
-      }; readonly -f xsh
+      xsh(){ eval $(inscreen -t "SSH:$*") 'ssh "$@"';}; readonly -f xsh
       xsu(){
         if [ "$1" ]; then
-          eval $(inscreen -t "\\\$ |shell($1):") sudo -u "\$1" -i
+          eval $(inscreen -t "\\\$ |shell($1):") 'sudo -u "$1" -i'
         else
-          eval $(inscreen -t "# |sudo($USER):") sudo PATH="\$PATH" -Es
+          eval $(inscreen -t "# |sudo($USER):") 'sudo PATH="$PATH" -Es'
         fi
       }; readonly -f xsu
       __set_prompt()
