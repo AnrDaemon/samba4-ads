@@ -8,6 +8,6 @@
             set -- "$_host" "$USER"
           fi
         fi
-        eval $(inscreen -t "LXC:$*") `sudo lxc-attach -n "${1:-dc1}" -- su -l "${@:2}"`
+        eval $(inscreen -t "LXC:$*") 'sudo lxc-attach -n "${1:-dc1}" -- su -l "${@:2}"'
       }; readonly -f xat
       xvb(){ xsu virtualbox;}; readonly -f xvb
