@@ -2,8 +2,7 @@ alias diff='diff -burd'
       acl(){ /usr/bin/getfacl "${1-.}" "${@:2}";}; readonly -f acl
 alias e='${VISUAL:-${EDITOR:-${SELECTED_EDITOR:?"Define VISUAL or EDITOR environment variable!"}}} '
       inscreen(){
-        screen -q -ls
-        if [ $? -gt 10 ] && screen -S "main" -X select . 2> /dev/null 1>&2 ; then
+        if screen -S "main" -X select . 2> /dev/null 1>&2 ; then
           printf 'screen -S "main" -X screen '
           printf "'%s' " "$@" "--"
         fi
