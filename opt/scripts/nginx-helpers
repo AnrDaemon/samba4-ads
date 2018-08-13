@@ -1,0 +1,40 @@
+_have nginx && {
+    _nginx_list_sites() {
+        COMPREPLY=( $( compgen -W "$( cd "/etc/nginx/sites-$1/"; ls --quoting-style=shell *.conf )" "$cur" ) )
+    }
+
+    _nginx_complete_available() {
+        local cur prev
+
+        COMPREPLY=()
+        _get_comp_words_by_ref cur prev
+
+        case $prev in
+            *)
+                _nginx_list_sites available
+                return 0
+            ;;
+        esac
+
+        return 1
+    }
+
+    _nginx_complete_enabled() {
+        local cur prev
+
+        COMPREPLY=()
+        _get_comp_words_by_ref cur prev
+
+        case $prev in
+            *)
+                _nginx_list_sites enabled
+                return 0
+            ;;
+        esac
+
+        return 1
+    }
+
+    complete -o default -F _nginx_complete_available ngensite
+    complete -o default -F _nginx_complete_enabled ngdissite
+}
