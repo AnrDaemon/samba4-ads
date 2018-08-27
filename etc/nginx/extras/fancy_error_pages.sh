@@ -16,7 +16,7 @@ location = /-error-%u {
 }
 '
 
-echo "# Fancy error pages for nginx webserver"
+echo "# Fancy error pages for nginx webserver" > "fancy_error_pages"
 while IFS=: read -r _code _name _desc _ref; do
     [ "$_code" ] && printf "$_tpl" $_code $_code $_code $_code $_code "$_name" "$_name" "${_desc:-$_name}"
-done < "fancy_error_pages.list"
+done >> "fancy_error_pages" < "fancy_error_pages.list"
