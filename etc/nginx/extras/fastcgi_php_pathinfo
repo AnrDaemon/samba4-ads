@@ -1,0 +1,4 @@
+# PHP PATH_INFO hack.
+# Please do not use this hack in production.
+# Look for more direct solutions.
+fastcgi_split_path_info ^(.+?\.php)(/.*)$;

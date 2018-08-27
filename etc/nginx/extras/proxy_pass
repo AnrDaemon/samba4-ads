@@ -1,0 +1,22 @@
+# Force proxy keepalives.
+proxy_http_version 1.1;
+
+set $use_port ":$server_port";
+if ( "$use_port" = "$def_port" ) {
+    set $use_port "";
+}
+
+# Force rewrite of common mislocations.
+proxy_redirect default;
+proxy_redirect "//$host:$proxy_port/" "$scheme://$host$use_port/";
+proxy_redirect "http://$host:$proxy_port/" "$scheme://$host$use_port/";
+proxy_redirect "https://$host:$proxy_port/" "$scheme://$host$use_port/";
+
+# Set origin headers for proxied server.
+proxy_set_header Host $host;
+proxy_set_header Connection "";
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Host $x_host;
+proxy_set_header X-Forwarded-Port $x_port;
+proxy_set_header X-Forwarded-Proto $x_scheme;

@@ -1,9 +1,11 @@
 # PHP FPM default config.
-fastcgi_split_path_info ^(.+?\.php)(/.*)$;
 
 #fastcgi_pass   unix:/run/php/php-fpm.sock;
 fastcgi_index  index.php;
 
 include        extras/fastcgi_params;
+fastcgi_param  SERVER_NAME      $host;
 fastcgi_param  SERVER_ADMIN     "webmaster@$host";
 fastcgi_param  SERVER_SIGNATURE "<address>nginx/$nginx_version server at $host port $server_port</address>";
+
+fastcgi_keep_conn on;

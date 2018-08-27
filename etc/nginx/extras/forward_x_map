@@ -1,0 +1,20 @@
+# Define default protocols' ports
+map $scheme $def_port {
+    "http" ":80";
+    "https" ":443";
+    default "";
+}
+
+# Remap X-Forwarded headers for proxy chaining.
+geo $realip_remote_addr $x_scheme {
+    127.0.0.0/8 $http_x_forwarded_proto;
+    default $scheme;
+}
+geo $realip_remote_addr $x_host {
+    127.0.0.0/8 $http_x_forwarded_host;
+    default $host:$server_port;
+}
+geo $realip_remote_addr $x_port {
+    127.0.0.0/8 $http_x_forwarded_port;
+    default $server_port;
+}
