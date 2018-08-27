@@ -3,13 +3,13 @@ server {
     server_name  @USER@.rootdir.org @USER@.darkdragon.lan;
 
     # RealIP config
-    include extra/proxy_upstream;
+    include extras/proxy_upstream;
 
     # Local filter block.
-    #include extra/access_local;
+    #include extras/access_local;
 
     # Block access to VCS dirs.
-    include extra/access_vcs;
+    include extras/access_vcs;
 
     access_log "@HOME@/logs/access.log" combined;
     error_log  "@HOME@/logs/error.log" warn;
@@ -31,7 +31,7 @@ server {
         # pass the PHP scripts to FastCGI server
         #
         location ~ [^/]\.(php|html)(/|$) {
-            include        extra/fastcgi_php_fpm;
+            include        extras/fastcgi_php_fpm;
 
             fastcgi_param  SERVER_ADMIN     "@USER@@rootdir.org";
             fastcgi_param  SERVER_SIGNATURE "<address>nginx/$nginx_version server at $http_host port $server_port</address>";

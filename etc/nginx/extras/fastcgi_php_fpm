@@ -1,14 +1,9 @@
 # PHP FPM default config.
 fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-if (!-f $document_root$fastcgi_script_name) {
-    return 404;
-}
 
 #fastcgi_pass   unix:/run/php/php-fpm.sock;
 fastcgi_index  index.php;
 
-include        extra/fastcgi_params;
-#fastcgi_param  SERVER_NAME      $http_host;
-#fastcgi_param  SERVER_SIGNATURE "<address>nginx/$nginx_version server at $http_host port $server_port</address>";
-fastcgi_param  SERVER_ADMIN     "webmaster@$server_name";
-fastcgi_param  SERVER_SIGNATURE "<address>nginx/$nginx_version server at $server_name port $server_port</address>";
+include        extras/fastcgi_params;
+fastcgi_param  SERVER_ADMIN     "webmaster@$host";
+fastcgi_param  SERVER_SIGNATURE "<address>nginx/$nginx_version server at $host port $server_port</address>";
