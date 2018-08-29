@@ -5,21 +5,35 @@ map $scheme $def_port {
     default "";
 }
 
-# Remap X-Forwarded headers for proxy chaining.
+# Assert trusted remote address.
 geo $realip_remote_addr $x_trusted {
     127.0.0.0/8 1;
     default 0;
 }
 
-map $x_trusted $x_scheme {
+map $x_trusted $x_tmp_proto {
     1 $http_x_forwarded_proto;
     default $scheme;
 }
-map $x_trusted $x_host {
+map $x_tmp_proto $x_forwarded_proto {
+    "" $scheme;
+    default $x_tmp_proto;
+}
+
+map $x_trusted $x_tmp_host {
     1 $http_x_forwarded_host;
     default $host:$server_port;
 }
-map $x_trusted $x_port {
+map $x_tmp_host $x_forwarded_host {
+    "" $host:$server_port;
+    default $x_tmp_host;
+}
+
+map $x_trusted $x_tmp_port {
     1 $http_x_forwarded_port;
     default $server_port;
+}
+map $x_tmp_port $x_forwarded_port {
+    "" $server_port;
+    default $x_tmp_port;
 }

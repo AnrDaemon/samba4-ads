@@ -15,8 +15,8 @@ proxy_redirect "https://$host:$proxy_port/" "$scheme://$host$use_port/";
 # Set origin headers for proxied server.
 proxy_set_header Host $host;
 proxy_set_header Connection "";
-proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Forwarded-Host $x_host;
-proxy_set_header X-Forwarded-Port $x_port;
-proxy_set_header X-Forwarded-Proto $x_scheme;
+
+proxy_set_header X-Forwarded-Host $x_forwarded_host;
+proxy_set_header X-Forwarded-Port $x_forwarded_port;
+proxy_set_header X-Forwarded-Proto $x_forwarded_proto;
