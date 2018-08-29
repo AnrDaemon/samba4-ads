@@ -1,5 +1,5 @@
 # Template used to create this container: /usr/share/lxc/templates/lxc-ubuntu
-# Parameters passed to the template: --release=xenial --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,cifs-utils,krb5-user,libnss-winbind,libpam-krb5,smbclient,samba-dsdb-modules,samba-vfs-modules
+# Parameters passed to the template: --release=bionic --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,ifupdown,cifs-utils,krb5-user,libnss-winbind,libpam-winbind,smbclient,samba-dsdb-modules,samba-vfs-modules
 # ##CHECKSUM##
 # For additional config options, please look at lxc.container.conf(5)
 
@@ -13,17 +13,16 @@ lxc.start.auto = 0
 lxc.include = /usr/share/lxc/config/ubuntu.common.conf
 
 # Container specific configuration
-lxc.rootfs = <lxcroot>/<containername>/rootfs
-lxc.rootfs.backend = dir
-#lxc.mount = <lxcroot>/<containername>/fstab
-lxc.utsname = <containername>
+lxc.rootfs.path = dir:<lxcroot>/<containername>/rootfs
+#lxc.mount.fstab = <lxcroot>/<containername>/fstab
+lxc.uts.name = <containername>
 lxc.arch = amd64
 
 # Network configuration
-lxc.network.type = macvlan
-lxc.network.macvlan.mode = bridge
-lxc.network.link = if0
+lxc.net.0.type = macvlan
+lxc.net.0.macvlan.mode = bridge
+lxc.net.0.link = if0
 
-lxc.network.hwaddr = 00:16:3e:xx:xx:xx
-lxc.network.name = eth0
-lxc.network.flags = down
+lxc.net.0.hwaddr = 00:16:3e:xx:xx:xx
+lxc.net.0.name = eth0
+lxc.net.0.flags = down
