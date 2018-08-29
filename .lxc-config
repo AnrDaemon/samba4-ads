@@ -1,5 +1,5 @@
 # Template used to create this container: /usr/share/lxc/templates/lxc-ubuntu
-# Parameters passed to the template: --release=bionic --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,ifupdown,cifs-utils,krb5-user,libnss-winbind,libpam-winbind,smbclient,samba-dsdb-modules,samba-vfs-modules
+# Parameters passed to the template: --release=bionic --arch=amd64 --mirror=http://ru.archive.ubuntu.com/ubuntu --packages=acl,aptitude,attr,bash-completion,curl,dnsutils,htop,iptables,man-db,mc,nano,ncurses-term,patch,screen,software-properties-common,ssl-cert,tcpdump,wget,ifupdown,cifs-utils,krb5-user,libnss-winbind,libpam-winbind,samba,samba-dsdb-modules,samba-vfs-modules,smbclient
 # ##CHECKSUM##
 # For additional config options, please look at lxc.container.conf(5)
 
