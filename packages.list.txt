@@ -23,6 +23,7 @@ wget
 mailutils
 ssmtp
 
+samba
 cifs-utils
 krb5-user
 libnss-winbind
