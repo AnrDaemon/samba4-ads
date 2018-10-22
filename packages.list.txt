@@ -20,7 +20,12 @@ ssl-cert
 tcpdump
 wget
 
-mailutils
+libpam-cap
+libpam-cgfs
+libpam-systemd
+
+mutt
+?mailutils
 ssmtp
 
 samba
