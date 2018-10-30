@@ -1,4 +1,4 @@
-Name: Homedir creation
+Name: Homedir creation (local)
 Default: yes
 Priority: 256
 Session-Type: Additional
