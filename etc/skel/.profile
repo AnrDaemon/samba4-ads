@@ -32,6 +32,8 @@ test -r "$HOME/.environment" && {
     done < "$HOME/.environment"
 }
 
+[ -x "$HOME/bin/online.sh" ] && . "$HOME/bin/online.sh"
+
 [ "$( which screen 2> /dev/null )" ] && {
     screen -q -ls
     if [ $? -gt 10 ]; then
