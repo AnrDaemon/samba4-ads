@@ -12,9 +12,9 @@ alias xsc='screen -aDR "main"'
       xsh(){ eval $(inscreen -t "SSH:$*") 'ssh "$@"';}; readonly -f xsh
       xsu(){
         if [ "$1" ]; then
-          eval $(inscreen -t "\\\$ |shell($1):") 'sudo -u "$1" -i'
+          eval $(inscreen -t "\\\$ |shell($1):") 'sudo -iHu "$1"'
         else
-          eval $(inscreen -t "# |sudo($USER):") 'sudo PATH="$PATH" -Es'
+          eval $(inscreen -t "# |sudo($USER):") 'sudo PATH="$PATH" -iH'
         fi
       }; readonly -f xsu
       __set_prompt()
