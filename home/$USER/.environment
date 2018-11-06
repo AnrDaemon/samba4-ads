@@ -1,1 +1,1 @@
-PS_FORMAT=pid,ppid,tname,stat,time,args
+PS_FORMAT=pid,ppid,euser,tname,stat,time,args
