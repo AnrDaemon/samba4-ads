@@ -1,0 +1,23 @@
+# The `lxc-list' helper should be whitelisted in sudoers for transparent operation
+# F.e.
+#
+#   ALL ALL = (root) NOPASSWD: /opt/scripts/lxc-list
+#
+
+_priv_xat_complete() {
+    local cur prev
+
+    COMPREPLY=()
+    _get_comp_words_by_ref cur prev
+
+    case $prev in
+        xat)
+            COMPREPLY=( $( IFS=$'\n' compgen -W "$( sudo /opt/scripts/lxc-list --active )" "$cur" ) )
+            return 0
+        ;;
+    esac
+
+    return 1
+}
+
+complete -o default -F _priv_xat_complete xat
