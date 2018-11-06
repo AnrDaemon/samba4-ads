@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ "$1" = "--full" ]; then
   shift
-  sudo HOME=/var/lib/virtualbox -u virtualbox /usr/bin/VBoxManage showvminfo "$1" --machinereadable
+  sudo -Hu virtualbox /usr/bin/VBoxManage showvminfo "$1" --machinereadable
 else
-  sudo HOME=/var/lib/virtualbox -u virtualbox "/usr/share/vboxsvc/vboxvminfo.sh" "$1"
+  sudo -Hu virtualbox "/usr/share/vboxsvc/vboxvminfo.sh" "$1"
 fi
