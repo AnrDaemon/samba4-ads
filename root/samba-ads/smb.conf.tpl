@@ -11,7 +11,7 @@
 
 #MS	security = ADS
 #DC	server role = active directory domain controller
-#DC	idmap_ldb:use rfc2307 = Yes
+#DC	idmap_ldb : use rfc2307 = Yes
 
 ;DC	dns forwarder = @DNS_MASTER@
 
@@ -49,6 +49,10 @@
 	map acl inherit = Yes
 	dos charset = CP866
 	store dos attributes = Yes
+	map archive = No
+	map hidden = No
+	map readonly = No
+	map system = No
 
 #DC	template homedir = /home/%U
 #DC	template shell = /bin/bash
@@ -58,6 +62,7 @@
 #	local master = Yes
 #	os level = 255
 #MS	browse list = No
+#	wins support = Yes
 
 	panic action = /usr/share/samba/panic-action %d
 	oplocks = No
@@ -69,11 +74,13 @@
 	client ldap sasl wrapping = sign
 
 #DC[netlogon]
+#DC	comment = Network Logon Service
 #DC	path = /var/lib/samba/sysvol/@FQDN@/scripts
 #DC	read only = No
 #DC	csc policy = disable
 
 #DC[sysvol]
+#DC	comment = Domain System Volume
 #DC	path = /var/lib/samba/sysvol
 #DC	read only = No
 #DC	csc policy = disable
