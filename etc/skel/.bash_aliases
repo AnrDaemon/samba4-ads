@@ -1,4 +1,3 @@
-alias diff='diff -burd'
       acl(){ /usr/bin/getfacl "${1-.}" "${@:2}";}; readonly -f acl
 alias e='${VISUAL:-${EDITOR:-${SELECTED_EDITOR:?"Define VISUAL or EDITOR environment variable!"}}} '
       inscreen(){
