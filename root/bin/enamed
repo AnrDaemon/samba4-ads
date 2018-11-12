@@ -10,7 +10,7 @@ fi
 umask 0022
 
 # Fuck user's $PATH
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 
 # Find user's preferred editor. If possible.
 _editor="${FCEDIT:-${VISUAL:-${EDITOR:-$(which editor)}}}" || {
@@ -81,7 +81,8 @@ $(basename $0) [ -e | -t ] [-v] [<zonename>]
   -t,--test - test configuration
   -v,--verbose - verbose test output
 
-Default is \`edit'. Zone files are looked in \`/var/lib/bind/$zonename.hosts'."
+Default is \`edit'.
+Zone files are looked in \`/var/lib/bind/\$zonename.hosts'."
       exit 0
       ;;
     -t|--test)
@@ -122,7 +123,8 @@ test -w "$_file" || {
 } >&2
 
 # Prepare to edit a config file.
-rndc freeze "$_name"; sleep 1
+rndc freeze "$_name" || exit $?
+sleep 1
 _edit="$(mktemp "$_file.XXXXXXXX")"
 _test="$(mktemp "$_file.XXXXXXXX")"
 /bin/chown --reference="$_file" "$_edit" "$_test"
