@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /**
-* $Id: histpurge.php 646 2017-06-03 18:23:57Z anrdaemon $
+* $Id: histpurge.php 961 2018-12-05 21:33:09Z anrdaemon $
 */
 
 $histfile = $_SERVER['HOME'] . '/.bash_history';
@@ -33,14 +33,13 @@ foreach($hist as $oline)
     unset($hnew[$hkey]);
   }
 
-  if(preg_match("#-?-(help|version)\b#i", $hline) or
+  if(preg_match("#-?-(help|version)\\b#i", $hline) or
     preg_match("#^(head|
       aa-(complain|enforce)|
-      a2(en|dis)\S+|
-      apache\d?ctl|
-      apt\S+|
-      ((invoke|update)\-rc|/etc/init)\.d|service|
-      ifconfig(\s+\-a)?$|ip\s+a$|ifup|ifdown|
+      a2(en|dis)\\S+|
+      apache\\d?ctl|
+      ((invoke|update)-rc|/etc/init)\\.d|service|
+      ifconfig(\\s+-a)?$|ip\\s+a$|ifup|ifdown|
       apropos|
       (b?z)?cat|
       cd|
@@ -71,19 +70,19 @@ foreach($hist as $oline)
       rm|
       set|
       shutdown|
-      smbldap\-useradd|
+      smbldap-useradd|
       smbpasswd|
       tar|
       testparm|
       top|
       touch|
-      trace\S+|
+      trace\\S+|
       umount|
       uname|
       uptime|
       wbinfo|
       which|
-      tail)\b#x", trim($hline)))
+      tail)\\b#x", trim($hline)))
   {
     continue;
   }

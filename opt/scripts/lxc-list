@@ -1,0 +1,25 @@
+# LXC-LS suid wrapper.
+# List container names using specified filter.
+
+getopt --test
+if [ $? -ne 4 ]; then
+  echo Enhanced 'getopt' package required. >&2
+  return 4
+fi
+
+# Whitelist selection switches.
+eval set -- $(getopt -o 'g:' --shell sh --longoptions 'active,running,frozen,stopped,nesting::,groups:,filter:' -- "$@")
+for i; do
+  case $i in
+    --)
+      shift
+      break
+      ;;
+    *)
+      _opts="$_opts${_opts:+ }$i"
+      shift
+      ;;
+  esac
+done
+
+/usr/bin/lxc-ls --quiet --line $_opts | sed -Ee "/^.+/s/.+/'\\0'/;"
