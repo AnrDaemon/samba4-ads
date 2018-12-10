@@ -1,0 +1,4 @@
+# Service name : hostname : port : TLS flag
+smtp:mail.example.org::
+submission:mail.example.org:587
+submissions:mail.example.org:465:x

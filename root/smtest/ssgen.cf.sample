@@ -1,0 +1,17 @@
+# Fields define various adddresses used in testing examples.
+# It is strongly recommended that you control all of the mentioned addresses
+# So that if any mail escapes unintentionally, you would be able to contain it.
+#
+# This defines a "third [world] address", only used in "open relay" tests.
+_stranger=user@example.net
+# An "other" sender, external to the setup under testing.
+_remote=user@example.com
+# Existing real local recipient.
+# This user should exists and be real final destination address.
+_local=user@example.org
+# Existing virtual recipient.
+# This is used primarily for testing address rewriting and delivery rules.
+_virtual=postmaster@example.org
+# Nonexistent local recipient.
+# This is used primarily for testing backup delivery and domain-level relaying.
+_missing=nonexistent@example.org

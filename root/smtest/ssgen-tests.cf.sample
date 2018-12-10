@@ -1,0 +1,29 @@
+# Lines starting with "#" are ignored, so is lines that resolve to empty "service" field.
+#
+# These variables are only for better understanding of the file contents:
+#
+#_stranger=user@example.net
+#_remote=user@example.com
+#_local=user@example.org
+#_virtual=postmaster@example.org
+#_missing=nonexistent@example.org
+#
+# Fields in this file (?optional):
+#
+# service : ?name : ?expect : from : to : ?auth : ?msgto
+
+# Fakeself - a typical spammer attack, pretending to send mail from yourself.
+smtp:fakeself::$_local:$_local:
+# Final destination - a remote MX sending mail to an existing user in domain.
+smtp:final::$_remote:$_local:
+# Testing common server misconfiguration: an attempt to send mail to "@localhost".
+# Should NOT succeed for wild internet delivery.
+smtp:localhost::$_remote:${_local%@*}@localhost:
+# Testing "open relay" delivery between two external domains.
+smtp:openrelay::$_stranger:$_remote:
+# Testing "normal relay" delivery from local address to external domain.
+smtp:relay::$_local:$_remote:
+# Testing "normal relay" delivery with authentication.
+smtp:relay-auth::$_local:$_remote:x
+# Testing delivery to a local virtual address. F.e. postmaster@
+smtp:virtual::$_remote:$_virtual:
