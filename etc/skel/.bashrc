@@ -10,7 +10,7 @@ esac
 
 # don't put duplicate lines in the history. See bash(1) for more options
 #export HISTCONTROL=ignoredups
-export HISTIGNORE="clear:cd *:history *:man *:nano *"
+export HISTIGNORE="clear:history *"
 export HISTCONTROL=ignoreboth:erasedups
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTSIZE=1000

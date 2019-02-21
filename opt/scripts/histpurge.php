@@ -62,6 +62,7 @@ foreach($hist as $oline)
       messages|
       m[cv]|
       mkdir|
+      nano|
       netstat|
       nslookup|
       passwd|
