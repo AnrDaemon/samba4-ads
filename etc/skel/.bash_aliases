@@ -7,7 +7,17 @@ alias e='${VISUAL:-${EDITOR:-${SELECTED_EDITOR:?"Define VISUAL or EDITOR environ
         fi
       }; readonly -f inscreen
 alias lld='ls -ld'
-alias xsc='screen -aDR "main"'
+      xsc(){
+        _sh="$( inscreen )"
+        if [ "$_sh" ]; then
+          eval $( inscreen -t "\\\$ |shell(${1:--}):" ) "$@"
+        elif [ "$1" ]; then
+          echo No running screen session found. >&2
+          return 2
+        else
+          screen -aDR "main"
+        fi
+      }; readonly -f xsc
       xsh(){ eval $(inscreen -t "SSH:$*") 'ssh "$@"';}; readonly -f xsh
       xsu(){
         if [ "$1" ]; then
