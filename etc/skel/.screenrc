@@ -11,7 +11,7 @@ defbce "on"
 
 #TITLES (naming windows)
 defdynamictitle on
-shelltitle "$ |bash"
+shelltitle "$ |shell(-):"
 
 bind W windowlist
 bind k
