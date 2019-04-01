@@ -13,7 +13,7 @@ alias lld='ls -ld'
           eval $( inscreen -t "\\\$ |shell(${1:--}):" ) "$@"
         elif [ "$1" ]; then
           echo No running screen session found. >&2
-          return 2
+          eval "$@"
         else
           screen -aDR "main"
         fi
