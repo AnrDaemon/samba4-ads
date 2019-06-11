@@ -1,3 +1,4 @@
-# ~/.profile additions
+
+# $USER ~/.profile additions
 
 sudo PATH="$PATH" -iH && logout

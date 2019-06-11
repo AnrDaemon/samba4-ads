@@ -1,3 +1,4 @@
-# ~/.profile additions
+
+# root ~/.profile additions
 
 mesg n || true

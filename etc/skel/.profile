@@ -24,11 +24,7 @@ test -r "$HOME/.locale" && {
 
 test -r "$HOME/.environment" && {
     while read -r L; do
-        case ${L%%=*} in
-            PS_*)
-                export $L
-                ;;
-        esac
+        [ "${L##\#*}" ] && export "$L"
     done < "$HOME/.environment"
 }
 
