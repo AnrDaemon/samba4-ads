@@ -1,4 +1,6 @@
 
 # $USER ~/.profile additions
 
+. "$HOME/bin/ssh-agent.sh"
+
 sudo PATH="$PATH" -iH && logout
