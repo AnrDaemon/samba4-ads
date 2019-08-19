@@ -125,6 +125,6 @@ if ! shopt -oq posix; then
 fi
 
 # Import ssh agent settings
-test -r "$HOME/.ssh/agent" && . "$HOME/.ssh/agent"
+test -f "$HOME/.ssh/agent" && . "$HOME/.ssh/agent"
 
 __set_prompt
