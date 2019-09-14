@@ -50,6 +50,9 @@ if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
 fi
 
+# Prime ssh-agent if exists
+[ -f "$HOME/bin/ssh-agent.sh" -a -x "$HOME/bin/ssh-agent.sh" ] && . "$HOME/bin/ssh-agent.sh" > /dev/null
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists

@@ -23,7 +23,7 @@ alias lld='ls -ld'
         if [ "$1" ]; then
           eval $(inscreen -t "\\\$ |shell($1):") 'sudo -iHu "$1"'
         else
-          eval $(inscreen -t "# |sudo($USER):") 'sudo PATH="$PATH" -iH'
+          eval $(inscreen -t "# |sudo($USER):") 'sudo -iH'
         fi
       }; readonly -f xsu
       __set_prompt()
