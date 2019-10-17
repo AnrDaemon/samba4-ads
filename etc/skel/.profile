@@ -35,7 +35,7 @@ test -r "$HOME/.environment" && {
     if [ $? -gt 10 ]; then
         read -p "$(tput setaf 2)Found a running SCREEN sesion, attach?$(tput sgr0)[Y/n] " y >&2
         if [ "${y:-y}" = "y" -o "$y" = "Y" ]; then
-            screen -aDR && logout
+            exec screen -aDR
         fi
     else
         echo "$(tput setaf 3)No running SCREEN sessions found.$(tput sgr0)" >&2
