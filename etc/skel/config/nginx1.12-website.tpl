@@ -8,13 +8,13 @@ server {
     #ssl_certificate_key "@HOME@/.ssh/@USER@.key";
 
     # RealIP config
-    include extra/proxy_upstream;
+    include extras/proxy_upstream;
 
     # Local filter block.
-    #include extra/access_local;
+    #include extras/access_local;
 
     # Block access to VCS dirs.
-    include extra/access_vcs;
+    include extras/access_vcs;
 
     access_log "@HOME@/logs/access.log" combined;
     error_log "@HOME@/logs/error.log" warn;
