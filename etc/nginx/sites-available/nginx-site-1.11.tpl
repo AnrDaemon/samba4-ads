@@ -1,3 +1,5 @@
+dav_ext_lock_zone zone=satis.git:10m timeout=1m;
+
 server {
     listen       80;
     server_name  @USER@.rootdir.org @USER@.darkdragon.lan;
@@ -22,6 +24,19 @@ server {
     index  index.php index.html;
 
     autoindex on;
+
+    location  ^~ /repos/ {
+        alias /home/satis/repos/;
+
+        allow 192.168.1.0/24;
+        deny all;
+
+        location ~ ^/repos/[^/.]+\.git/ {
+            dav_methods PUT DELETE MKCOL COPY MOVE;
+            dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
+            dav_ext_lock zone=satis.git;
+        }
+    }
 
     location / {
         try_files $uri $uri/ =404;
