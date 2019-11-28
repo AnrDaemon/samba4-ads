@@ -29,14 +29,19 @@ server {
     location / {
         try_files $uri $uri/ =404;
 
+        ssi on;
         autoindex on;
 
         #client_max_body_size 32M;
 
         # pass the PHP scripts to FastCGI server
         #
-        location ~ [^/]\.(php|html)(/|$) {
-            include extra/fastcgi_php_fpm;
+        location ~ [^/]\.(php)(/|$) {
+
+            ssi off;
+
+            include extras/fastcgi_php_fpm;
+            #fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
 
             fastcgi_param SERVER_ADMIN "@USER@@rootdir.org";
             fastcgi_param SERVER_SIGNATURE "<address>nginx/$nginx_version server at $host port $server_port</address>";
@@ -54,6 +59,11 @@ server {
     #    ssi on;
     #    ssi_types *;
     #}
+
+    include "mime.types";
+    types {
+        text/html ssi;
+    }
 
     #error_page 404 /404.html;
 
