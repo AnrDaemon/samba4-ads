@@ -1,0 +1,5 @@
+set $fixed_destination $http_destination;
+if ( $http_destination ~* ^https:(.*)$ ) {
+    set $fixed_destination http:$1;
+}
+proxy_set_header Destination $fixed_destination;
