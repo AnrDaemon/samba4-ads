@@ -8,7 +8,7 @@ server {
     #ssl_certificate_key "@HOME@/.ssh/@USER@.key";
 
     # RealIP config
-    include extras/proxy_upstream;
+    #include extras/proxy_upstream;
 
     # Local filter block.
     #include extras/access_local;
@@ -50,6 +50,9 @@ server {
 
             fastcgi_pass 127.5.6.@XADR1@:@FPORT@;
             #fastcgi_pass 127.7.1.@XADR1@:@FPORT@;
+            #fastcgi_pass 127.7.2.@XADR1@:@FPORT@;
+            #fastcgi_pass 127.7.3.@XADR1@:@FPORT@;
+            #fastcgi_pass 127.7.4.@XADR1@:@FPORT@;
         }
     }
 

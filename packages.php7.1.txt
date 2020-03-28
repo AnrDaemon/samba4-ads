@@ -10,11 +10,14 @@ php7.1-gmp
 php7.1-imagick
 php7.1-imap
 php7.1-intl
+php7.1-json
 php7.1-ldap
 php7.1-lua
 php7.1-mailparse
 php7.1-mbstring
 php7.1-mysql
+php7.1-opcache
+php7.1-readline
 php7.1-rrd
 php7.1-snmp
 php7.1-sodium

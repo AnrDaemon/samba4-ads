@@ -21,7 +21,7 @@ alias lld='ls -ld'
       xsh(){ eval $(inscreen -t "SSH:$*") 'ssh "$@"';}; readonly -f xsh
       xsu(){
         if [ "$1" ]; then
-          eval $(inscreen -t "\\\$ |shell($1):") 'sudo -iHu "$1"'
+          eval $(inscreen -t "\\\$ |shell($1):") 'sudo -iHu "$@"'
         else
           eval $(inscreen -t "# |sudo($USER):") 'sudo -iH'
         fi
