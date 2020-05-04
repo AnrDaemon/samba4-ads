@@ -6,20 +6,19 @@
 _agent="$HOME/.ssh/agent"
 eval set -- $( getopt --shell=sh -o 'k' -- "$@" )
 
-test -r "$_agent" && . "$_agent"
+test -f "$_agent" && . "$_agent"
 
 if [ "$SSH_AGENT_PID" ]; then
   test "$1" = "-k" && /usr/bin/ssh-agent -k > /dev/null 2>&1
 
   if ! kill -0 "$SSH_AGENT_PID" 2> /dev/null; then
     # Reap dead agent's socket
-    rm "$SSH_AUTH_SOCK" 2> /dev/null
-    rm "$_agent"
+    rm "$SSH_AUTH_SOCK" "$_agent" 2> /dev/null
     unset SSH_AUTH_SOCK SSH_AGENT_PID
   fi
 fi
 
-
+test "$1" = "-k" && exit
 test "$SSH_AGENT_PID" && return
 
 socket="$( mktemp -u "/run/user/$( id -u )/ssh-XXXXXXXX" )"
