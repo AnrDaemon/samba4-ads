@@ -13,18 +13,18 @@ export RAR='-idcdp -mdg -m4 -s'
 export EDITOR="$( PATH=/usr/local/bin:/usr/bin:/bin which nano )"
 
 test -r "$HOME/.locale" && {
-    while read -r L; do
-        case ${L%%=*} in
+    while IFS== read -r name value; do
+        case "$name" in
             LANG*|LC_*)
-                export $L
+                [ "$value" ] && eval "$name=$value" export "$name"
                 ;;
         esac
     done < "$HOME/.locale"
 }
 
 test -r "$HOME/.environment" && {
-    while read -r L; do
-        [ "${L##\#*}" ] && export "$L"
+    while IFS== read -r name value; do
+        [ "$value" ] && eval "$name=$value" export "$name"
     done < "$HOME/.environment"
 }
 
