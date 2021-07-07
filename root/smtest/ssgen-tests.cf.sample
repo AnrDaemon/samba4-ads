@@ -10,6 +10,16 @@
 #
 # Fields in this file (?optional):
 #
+# service - name of the service to be used in test;
+# name - an optional test name;
+# expect - (UNIMPLEMENTED) expected response;
+# from - MAIL FROM address;
+# to - RCPT TO address;
+# auth - authentication credentials to use; if not empty and no
+#       specified credentials found, use common ".auth" set;
+# msgto - Message "To" address; defaults to "RCPT TO" address.
+
+#
 # service : ?name : ?expect : from : to : ?auth : ?msgto
 
 # Fakeself - a typical spammer attack, pretending to send mail from yourself.
