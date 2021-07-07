@@ -32,15 +32,15 @@ alias lld='ls -ld'
         test "$PC_ORIG" || eval "PC_ORIG='$PROMPT_COMMAND'"
         PROMPT_COMMAND=__bash_prompt
       }; readonly -f __set_prompt
-      __bash_prompt()
+      eval "__bash_prompt()
       {
-        local ERRORLEVEL=$?
-        if [ $ERRORLEVEL != 0 ]; then
-          ERRORLEVEL="\n[$(tput setaf 1)$ERRORLEVEL$(tput sgr0)]"
+        local ERRORLEVEL=\$?
+        if [ \$ERRORLEVEL != 0 ]; then
+          ERRORLEVEL=\"\\n[$(tput setaf 1)\$ERRORLEVEL$(tput sgr0)]\"
         else
           ERRORLEVEL=
         fi
 
-        eval "$PC_ORIG"
-        [ "$PS_ORIG" ] && PS1="$ERRORLEVEL$PS_ORIG"
-      }; readonly -f __bash_prompt
+        eval \"\$PC_ORIG\"
+        [ \"\$PS_ORIG\" ] && PS1=\"\$ERRORLEVEL\$PS_ORIG\"
+      }"; readonly -f __bash_prompt
