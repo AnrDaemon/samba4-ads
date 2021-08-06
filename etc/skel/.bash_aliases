@@ -20,11 +20,10 @@ alias lld='ls -ld'
       }; readonly -f xsc
       xsh(){ eval $(inscreen -t "SSH:$*") 'ssh "$@"';}; readonly -f xsh
       xsu(){
-        if [ "$1" ]; then
-          eval $(inscreen -t "\\\$ |shell($1):") 'sudo -iHu "$@"'
-        else
-          eval $(inscreen -t "# |sudo($USER):") 'sudo -iH'
+        if ! [ "$1" ]; then
+          set -- "root" -iH
         fi
+        eval $(inscreen -t "\\\$ |sudo($USER:$1):") 'sudo -u "$@"'
       }; readonly -f xsu
       __set_prompt()
       {
