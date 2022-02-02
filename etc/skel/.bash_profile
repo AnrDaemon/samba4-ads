@@ -31,14 +31,16 @@ test -r "$HOME/.environment" && {
 [ -x "$HOME/bin/online.sh" ] && . "$HOME/bin/online.sh"
 
 [ "$( which screen 2> /dev/null )" ] && {
+    # Uncomment for old screen's (exit codes are lower by one)
+    #_old_screen_base=9
     screen -q -ls
-    if [ $? -gt 10 ]; then
+    if [ $? -gt ${_old_screen_base:-10} ]; then
         read -p "$(tput setaf 2)Found a running SCREEN sesion, attach?$(tput sgr0)[Y/n] " y >&2
         if [ "${y:-y}" = "y" -o "$y" = "Y" ]; then
             exec screen -aDR
         fi
     else
-        echo "$(tput setaf 3)No running SCREEN sessions found.$(tput sgr0)" >&2
+        echo "$(tput setaf 3)No attachable SCREEN sessions found.$(tput sgr0)" >&2
     fi
 }
 
