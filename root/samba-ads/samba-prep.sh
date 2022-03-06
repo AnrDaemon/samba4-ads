@@ -68,9 +68,9 @@ _get_help_finished()
   }
   echo "files are generated, move them to their rightful places:
 
-    nsswitch.conf -> /etc/nsswitch.conf
-    krb5.conf -> /etc/krb5.conf
-    smb.conf -> /etc/samba/smb.conf
+    install -bCDT -o root -g root -m 0755 nsswitch.conf /etc/nsswitch.conf
+    install -bCDT -o root -g root -m 0755 krb5.conf /etc/krb5.conf
+    install -bCDT -o root -g root -m 0755 smb.conf /etc/samba/smb.conf
 
 Make sure your /etc/hosts file contains proper local resolution record:
 
@@ -169,6 +169,13 @@ fi > "./smb.conf"
     s*@REALM@*$( printf "%s" "$_realm" | tr '[:lower:]' '[:upper:]' )*g;
 " > "./krb5.conf"
 
-cp nsswitch.conf.tpl nsswitch.conf
+if [ -f /etc/nsswitch.conf ]; then
+    sed -Ee '/^passwd:/{/winbind/!s/[[:space:]]*$/ winbind/;}' \
+        -e '/^group:/{/winbind/!s/[[:space:]]*$/ winbind/;}' \
+        -e '/^netgroup:/{/winbind/!s/[[:space:]]*$/ winbind/;}' \
+        > nsswitch.conf < /etc/nsswitch.conf
+else
+    cp nsswitch.conf.tpl nsswitch.conf
+fi
 
 _get_help_finished
