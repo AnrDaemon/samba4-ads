@@ -1,0 +1,13 @@
+[Unit]
+Description=km.ru mail service tunnel
+After=network-online.target
+After=local-fs.target
+
+[Service]
+ExecStart=/etc/stunnel/km-ru-smtps.stun
+KillMode=process
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target
