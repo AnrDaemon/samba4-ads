@@ -45,7 +45,7 @@
 	log level = 1
 
 	preload = homes
-	vfs objects = acl_xattr
+	vfs objects = dfs_samba4 acl_xattr
 	map acl inherit = Yes
 	dos charset = CP866
 	store dos attributes = Yes

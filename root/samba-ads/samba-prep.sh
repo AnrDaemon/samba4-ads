@@ -68,9 +68,9 @@ _get_help_finished()
   }
   echo "files are generated, move them to their rightful places:
 
-    install -bCDT -o root -g root -m 0755 nsswitch.conf /etc/nsswitch.conf
-    install -bCDT -o root -g root -m 0755 krb5.conf /etc/krb5.conf
-    install -bCDT -o root -g root -m 0755 smb.conf /etc/samba/smb.conf
+    install -bCDT -o root -g root -m 0644 nsswitch.conf /etc/nsswitch.conf
+    install -bCDT -o root -g root -m 0644 krb5.conf /etc/krb5.conf
+    install -bCDT -o root -g root -m 0644 smb.conf /etc/samba/smb.conf
 
 Make sure your /etc/hosts file contains proper local resolution record:
 
