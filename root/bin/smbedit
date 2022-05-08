@@ -32,10 +32,10 @@ dump_config()
   _check="$( mktemp -t smbedit.XXXXXXXX )"
   if [ "$( which samba-tool )" ]; then
     samba-tool testparm --suppress-prompt --configfile="$1" ${_verb:+--verbose} 2> "$_check"
-    _buff="$( cat "$_check" )"
+    _buff="$( grep -vE "^INFO " "$_check" )"
   else
     testparm -s ${_verb:+-v} -- "$1" 2> "$_check"
-    _buff="$( egrep -v "^(Processing|Load|Server)" "$_check" )"
+    _buff="$( grep -vE "^(Processing|Load|Server)" "$_check" )"
   fi
   rm "$_check"
   test "$_buff" || return 0
