@@ -1,5 +1,6 @@
 
 # $USER ~/.environment additions
 
+FETCHMAILHOME="$HOME/.local/fetchmail"
 PS_FORMAT=pid,ppid,euser,tname,stat,time,args
 LESS=-RS#4

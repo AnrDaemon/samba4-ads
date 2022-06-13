@@ -1,0 +1,10 @@
+
+poll example.test
+	protocol POP3
+	service 4995
+	uidl
+	auth password
+	user smbd@example.test
+	password "XXXXX"
+	to info@localdomain.ru
+	sslproto ''

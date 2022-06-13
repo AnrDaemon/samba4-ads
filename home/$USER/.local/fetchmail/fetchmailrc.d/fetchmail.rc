@@ -1,0 +1,15 @@
+# Please read `man 8 fetchmail` for options description
+
+defaults
+	tracepolls
+	no rewrite
+#	limit 50000000
+	fetchall
+#	smtphost localhost:/var/spool/postfix/private/lmtp
+#	lmtp
+	mda "/usr/sbin/sendmail -iG -N never -f %F -- %T"
+#	expunge 1
+	set syslog
+	set softbounce
+	set invisible
+#	set postmaster postmaster
