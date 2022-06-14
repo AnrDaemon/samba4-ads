@@ -1,0 +1,23 @@
+#!/usr/bin/stunnel4
+
+foreground = yes
+service = stunnel
+syslog = yes
+output = /dev/null
+
+# Use `/etc/systemd/system/stunnel@.service` template to enable the service.
+# I.e. `# systemctl enable stunnel@pop-mtu-ru`
+
+# See `man 8 stunnel4` for information about configuration options.
+
+[pop.mtu.ru-smtps]
+client = yes
+accept = 127.0.0.1:4465
+connect = umail.ru:465
+delay = yes
+
+[pop.mtu.ru-pop3s]
+client = yes
+accept = 127.0.0.1:4995
+connect = umail.ru:995
+delay = yes

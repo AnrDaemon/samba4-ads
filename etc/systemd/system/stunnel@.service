@@ -1,0 +1,21 @@
+## This is a template file for stunnel4(8) "services".
+#
+# Save your stunnel service definitions in the `/etc/stunnel/*.stun` files
+# and enable each service using `systemctl enable stunnel@service-name`.
+#
+# See service example in the /etc/stunnel/ directory.
+
+[Unit]
+Description=Tunnel using %i
+Documentation=man:stunnel4(8)
+After=network.target
+After=rc-local.service
+Requires=systemd-tmpfiles-setup.service
+ConditionPathExists=/etc/stunnel/%i.stun
+
+[Service]
+ExecStart=/usr/bin/stunnel /etc/stunnel/%i.stun
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
