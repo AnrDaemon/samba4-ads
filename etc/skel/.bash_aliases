@@ -11,7 +11,7 @@ alias man='xsc man '
       xsc(){
         _sh="$( inscreen )"
         if [ "$_sh" ]; then
-          eval $( inscreen -t "\\\$ |shell(${1:--}):" ) "$@"
+          eval $( inscreen -t "\\\$ |shell(${*:--}):" ) "$@"
         elif [ "$1" ]; then
           echo No running screen session found. >&2
           eval "$@"
@@ -24,7 +24,12 @@ alias man='xsc man '
         if ! [ "$1" ]; then
           set -- "root" -iH
         fi
-        eval $(inscreen -t "\\\$ |sudo($USER:$1):") 'sudo -u "$@"'
+        _u="$1"; shift
+        if [ "$_u" = "root" ]; then
+          eval $(inscreen -t "# |sudo($USER):") 'sudo -u root "$@"'
+        else
+          eval $(inscreen -t "\\\$ |shell($_u):") 'sudo -u "$_u" "$@"'
+        fi
       }; readonly -f xsu
       __set_prompt()
       {
