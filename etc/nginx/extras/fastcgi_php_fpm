@@ -9,3 +9,4 @@ fastcgi_param  SERVER_ADMIN     "webmaster@$host";
 fastcgi_param  SERVER_SIGNATURE "<address>nginx/$nginx_version server at $host port $server_port</address>";
 
 fastcgi_keep_conn on;
+fastcgi_socket_keepalive on;

@@ -1,16 +1,18 @@
-# Define default protocols' ports
-map $scheme $def_port {
-    "http" ":80";
-    "https" ":443";
-    default "";
+# Define port in reverse redirects
+map "$scheme:$server_port" $x_fixed_port {
+    "http:80" "";
+    "https:443" "";
+    default ":$server_port";
 }
 
 # Assert trusted remote address.
 geo $realip_remote_addr $x_trusted {
     127.0.0.0/8 1;
+    192.168.1.6 1;
     default 0;
 }
 
+# Forward protocol from trusted upstream, if specified
 map $x_trusted $x_tmp_proto {
     1 $http_x_forwarded_proto;
     default $scheme;
@@ -20,15 +22,17 @@ map $x_tmp_proto $x_forwarded_proto {
     default $x_tmp_proto;
 }
 
+# Forward original Host: header from trusted upstream, if specified
 map $x_trusted $x_tmp_host {
     1 $http_x_forwarded_host;
-    default $host:$server_port;
+    default $host;
 }
 map $x_tmp_host $x_forwarded_host {
-    "" $host:$server_port;
+    "" $host;
     default $x_tmp_host;
 }
 
+# Forward original server port from trusted upstream, if specified
 map $x_trusted $x_tmp_port {
     1 $http_x_forwarded_port;
     default $server_port;

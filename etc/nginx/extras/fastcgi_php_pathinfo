@@ -2,3 +2,4 @@
 # Please do not use this hack in production.
 # Look for more direct solutions.
 fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+fastcgi_param PATH_TRANSLATED "$document_root$fastcgi_path_info";
