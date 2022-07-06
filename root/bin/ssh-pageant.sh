@@ -19,10 +19,13 @@ if [ "$SSH_PAGEANT_PID" ]; then
 fi
 
 test "$1" = "-k" && exit
-test "$SSH_PAGEANT_PID" && exit
+test "$SSH_PAGEANT_PID" && ssh-add -l > /dev/null 2>&1 && exit
 
-socket="$( mktemp -u /var/run/ssh-XXXXXXXX )"
+# Attempting to restart the agent
+socket="$( mktemp -u "/run/user/$( id -u )/ssh-XXXXXXXX" )"
 eval $( cygdrop -- /usr/bin/ssh-pageant -qsa "$socket" | tee "$_agent" )
 
 # Remove empty settings file (agent failed to start).
 test -s "$_agent" || rm "$_agent"
+
+test -f "$SSH_AUTH_SOCK" -a -L "$HOME/.ssh/auth_sock" && ln -fsT "$SSH_AUTH_SOCK" "$HOME/.ssh/auth_sock"
