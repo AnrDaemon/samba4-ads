@@ -1,0 +1,12 @@
+# Required for admin functions to work
+# See manual page for implications
+PermitUserEnvironment yes
+
+# Restrict 'git' user from using unnecessary features
+Match user git
+    X11Forwarding no
+    AllowTcpForwarding no
+    PermitTunnel no
+    PermitTTY no
+    PasswordAuthentication no
+    PermitUserRC no

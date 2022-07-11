@@ -1,0 +1,7 @@
+#!/bin/sh
+### list
+##+     - List available repositories.
+
+. "$HOME/.config/git-shell-commands"
+
+find "$HOME" -xdev -mindepth 1 -maxdepth 2 -type d -execdir sh -c 'cd "{}"; test x$( git rev-parse --is-inside-git-dir 2> /dev/null ) = xtrue' \; -printf "$USER@$GIT_HOST:%P " -execdir sh -c 'echo | cat "{}/description" - | head -1' \;

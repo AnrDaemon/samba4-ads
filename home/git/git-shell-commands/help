@@ -1,0 +1,6 @@
+#!/bin/sh
+### help
+##+     - Print this help text.
+printf "%s\n" "Custom commands supported:" \
+              ""
+. "$HOME/git-shell-commands/list-commands"

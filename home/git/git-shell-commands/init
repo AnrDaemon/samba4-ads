@@ -1,0 +1,46 @@
+#!/bin/sh
+### init <group>/<repo>[.git]
+##+     - Initialize new Git repository.
+
+. "$HOME/.config/git-shell-commands"
+
+eval set -- $( getopt -o 'H' --longoptions 'help' --shell sh -- "$@" )
+for opt; do
+    case "$opt" in
+        --help|-H)
+            _do=help
+            shift
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac >&2
+done
+
+if ! id -Gnz "$GIT_USER" | grep -qzixF "$GIT_ADM_GROUP"; then
+    echo 'Access denied. Goodbye!' >&2
+    exit 1
+fi
+
+if [ $( echo "$1" | tr "/" "\\n" | wc -l ) -ne 2 ]; then
+    echo 'Repository name must be in the form of "<group>/<repo>[.git]"!' >&2
+    exit 3
+fi
+
+group="$( basename "$( dirname "$1" )" )"
+repo="$( basename "$1" .git )"
+if ! echo "$group/$repo.git" | grep -qE "^[_[:alnum:]]+(-[_[:alnum:]]+)*/[_[:alnum:]]+(-[_[:alnum:]]+)*(\\.git)?\$"; then
+    echo 'Repository name format is "<group>/<repo>[.git]"!'
+    echo 'Allowed symbols: alphanumeric plus underscore; also dash (only between words).'
+    exit 3
+fi >&2
+
+if ( cd "$HOME/$group/$repo.git" && ! git rev-parse --git-dir ) 2> /dev/null; then
+    echo 'Attempting to reinitialize existing repository!' >&2
+    exit 2
+fi
+
+printf "Initializing repository \`%s/%s.git'\n" "$group" "$repo"
+git init --bare "$HOME/$group/$repo.git" | sed -Ee "s#$HOME/#~/#g;"
+printf 'Clone via\n\n    git clone %s@%s:%s\n' "$USER" "$GIT_HOST" "$group/$repo.git"
