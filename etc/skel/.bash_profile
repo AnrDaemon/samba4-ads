@@ -1,9 +1,3 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
-
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
@@ -15,7 +9,7 @@ export EDITOR="$( PATH=/usr/local/bin:/usr/bin:/bin which nano )"
 test -r "$HOME/.locale" && {
     while IFS== read -r name value; do
         case "$name" in
-            LANG*|LC_*)
+            LANG|LC_*)
                 [ "$value" ] && eval "$name=$value" export "$name"
                 ;;
         esac
