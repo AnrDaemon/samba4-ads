@@ -66,11 +66,8 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-putty*)
-    PROMPT_COMMAND='printf "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: $(iconv -t CP1251 <<<"${PWD/$HOME/\~}")\a"'
-    ;;
-screen*|xterm*|rxvt*)
-    PROMPT_COMMAND='printf "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: ${PWD/$HOME/\~}\a"'
+putty*|screen*|xterm*|rxvt*)
+    PROMPT_COMMAND='printf %b "\e]0;${debian_chroot:+($debian_chroot)}${SUDO_USER:-$USER}@${HOSTNAME}: ${PWD/$HOME/\~}\a"'
     ;;
 *)
     ;;
