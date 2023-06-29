@@ -7,7 +7,7 @@ alias e='${VISUAL:-${EDITOR:-${SELECTED_EDITOR:?"Define VISUAL or EDITOR environ
         fi
       }; readonly -f inscreen
 alias lld='ls -ld '
-alias man='xsc /bin/man '
+alias man='xsc /usr/bin/man '
       xsc(){
         _sh="$( inscreen )"
         if [ "$_sh" ]; then
