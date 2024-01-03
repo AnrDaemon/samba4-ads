@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ShellLauncherConfiguration xmlns="http://schemas.microsoft.com/ShellLauncher/2018/Configuration"
+    xmlns:v2="http://schemas.microsoft.com/ShellLauncher/2019/Configuration">
+    <Profiles>
+        <DefaultProfile>
+            <Shell Shell="%SystemRoot%\explorer.exe">
+                <DefaultAction Action="RestartShell" />
+            </Shell>
+        </DefaultProfile>
+        <Profile Id="{FBD7E626-A211-4B08-8890-B38D44963AD3}">
+            <Shell Shell="C:\Programs\LiteStep\bin_64\litestep.exe" v2:AllAppsFullScreen="false">
+                <DefaultAction Action="RestartShell" />
+            </Shell>
+        </Profile>
+    </Profiles>
+    <Configs>
+        <Config>
+            <!-- Sid can be user sid, local group sid, and AD group sid -->
+            <Account Sid="S-1-5-21-2916456319-725650362-4229827469-1000" />
+            <Profile Id="{FBD7E626-A211-4B08-8890-B38D44963AD3}" />
+        </Config>
+    </Configs>
+</ShellLauncherConfiguration>
