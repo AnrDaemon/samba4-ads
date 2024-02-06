@@ -1,4 +1,5 @@
 Defaults passwd_tries=1
-Defaults editor=/bin/nano
+Defaults editor=/usr/bin/nano
 Defaults umask=0022
 Defaults umask_override
+Defaults passprompt="[sudo@%H] password for %p:"

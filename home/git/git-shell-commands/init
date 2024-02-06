@@ -30,7 +30,7 @@ fi
 
 group="$( basename "$( dirname "$1" )" )"
 repo="$( basename "$1" .git )"
-if ! echo "$group/$repo.git" | grep -qE "^[_[:alnum:]]+(-[_[:alnum:]]+)*/[_[:alnum:]]+(-[_[:alnum:]]+)*(\\.git)?\$"; then
+if ! echo "$group/$repo.git" | grep -qE "^[_[:alnum:]]+(-[_[:alnum:]]+)*/[_[:alnum:]]+([.-][_[:alnum:]]+)*(\\.git)?\$"; then
     echo 'Repository name format is "<group>/<repo>[.git]"!'
     echo 'Allowed symbols: alphanumeric plus underscore; also dash (only between words).'
     exit 3
