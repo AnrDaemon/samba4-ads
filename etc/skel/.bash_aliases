@@ -1,5 +1,5 @@
       acl(){ /usr/bin/getfacl "${1-.}" "${@:2}";}; readonly -f acl
-alias e='${VISUAL:-${EDITOR:-${SELECTED_EDITOR:?"Define VISUAL or EDITOR environment variable!"}}} '
+alias e='${SELECTED_EDITOR:-${VISUAL:-${EDITOR:?"Define VISUAL or EDITOR environment variable!"}}} '
       inscreen(){
         if screen -S "main" -Q select . 2> /dev/null 1>&2 ; then
           printf 'screen -S "main" -X screen '
