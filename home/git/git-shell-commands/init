@@ -1,5 +1,5 @@
 #!/bin/sh
-### init <group>/<repo>[.git]
+### init <group>/<repo>[.git] [Description]
 ##+     - Initialize new Git repository.
 
 . "$HOME/.config/git-shell-commands"
@@ -19,14 +19,14 @@ for opt; do
 done
 
 if ! id -Gnz "$GIT_USER" | grep -qzixF "$GIT_ADM_GROUP"; then
-    echo 'Access denied. Goodbye!' >&2
+    echo 'Access denied. Goodbye!'
     exit 1
-fi
+fi >&2
 
 if [ $( echo "$1" | tr "/" "\\n" | wc -l ) -ne 2 ]; then
-    echo 'Repository name must be in the form of "<group>/<repo>[.git]"!' >&2
+    echo 'Repository name must be in the form of "<group>/<repo>[.git]"!'
     exit 3
-fi
+fi >&2
 
 group="$( basename "$( dirname "$1" )" )"
 repo="$( basename "$1" .git )"
@@ -36,10 +36,10 @@ if ! echo "$group/$repo.git" | grep -qE "^[_[:alnum:]]+(-[_[:alnum:]]+)*/[_[:aln
     exit 3
 fi >&2
 
-if ( cd "$HOME/$group/$repo.git" && ! git rev-parse --git-dir ) 2> /dev/null; then
-    echo 'Attempting to reinitialize existing repository!' >&2
+if git -C "$HOME/$group/$repo.git/" rev-parse --git-dir > /dev/null 2>&1; then
+    echo 'Attempting to reinitialize existing repository!'
     exit 2
-fi
+fi >&2
 
 printf "Initializing repository \`%s/%s.git'\n" "$group" "$repo"
 git init --bare "$HOME/$group/$repo.git" | sed -Ee "s#$HOME/#~/#g;"
