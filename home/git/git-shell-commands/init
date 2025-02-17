@@ -1,6 +1,8 @@
 #!/bin/sh
-### init <group>/<repo>[.git] [Description]
-##+     - Initialize new Git repository.
+### init <group>/<repo>[.git] [Description ...]
+##+     - Initialize new Git repository. All of 'Description' is an
+##+         one-line argument that will be written into ~/description.
+##+
 
 . "$HOME/.config/git-shell-commands"
 
@@ -18,7 +20,7 @@ for opt; do
     esac >&2
 done
 
-if ! id -Gnz "$GIT_USER" | grep -qzixF "$GIT_ADM_GROUP"; then
+if ! id -Gnz "${GIT_USER:-nobody}" | grep -qzixF "$GIT_ADM_GROUP"; then
     echo 'Access denied. Goodbye!'
     exit 1
 fi >&2
@@ -30,6 +32,7 @@ fi >&2
 
 group="$( basename "$( dirname "$1" )" )"
 repo="$( basename "$1" .git )"
+shift
 if ! echo "$group/$repo.git" | grep -qE "^[_[:alnum:]]+(-[_[:alnum:]]+)*/[_[:alnum:]]+([.-][_[:alnum:]]+)*(\\.git)?\$"; then
     echo 'Repository name format is "<group>/<repo>[.git]"!'
     echo 'Allowed symbols: alphanumeric plus underscore; also dash (only between words).'
@@ -41,6 +44,8 @@ if git -C "$HOME/$group/$repo.git/" rev-parse --git-dir > /dev/null 2>&1; then
     exit 2
 fi >&2
 
-printf "Initializing repository \`%s/%s.git'\n" "$group" "$repo"
+printf "Initializing repository \`%s/%s.git'…\n" "$group" "$repo"
 git init --bare "$HOME/$group/$repo.git" | sed -Ee "s#$HOME/#~/#g;"
+
+echo "$@" > "$HOME/$group/$repo.git/description"
 printf 'Clone via\n\n    git clone %s@%s:%s\n' "$USER" "$GIT_HOST" "$group/$repo.git"

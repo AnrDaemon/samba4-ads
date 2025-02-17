@@ -1,7 +1,8 @@
 #!/bin/sh
 ### list
 ##+     - List available repositories.
+##+
 
 . "$HOME/.config/git-shell-commands"
 
-find "$HOME"/* -xdev -mindepth 1 -maxdepth 2 -type d -name objects -execdir sh -c 'set -e; test "$( git rev-parse --is-inside-git-dir 2> /dev/null )" = "true"; printf "%s@%s:%s " "$USER" "$GIT_HOST" "${PWD##$HOME/}"; echo | cat "./description" - | head -1' _ '{}' \; | sort -n
+find "$HOME"/* -xdev -mindepth 1 -maxdepth 2 -type d -name objects -execdir sh -c 'set -e; test "$( git rev-parse --is-inside-git-dir 2> /dev/null )" = "true"; printf "%s@%s:%s " "$USER" "$GIT_HOST" "${PWD##$HOME/}"; echo | cat "./description" - | head -n 1' _ '{}' \; | sort -n

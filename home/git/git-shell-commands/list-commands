@@ -1,5 +1,6 @@
 #!/bin/sh
 ### list-commands
-##+     - List available commands
+##+     - List available commands.
+##+
 
-find "$HOME/git-shell-commands" -xdev -mindepth 1 -maxdepth 1 -type f -execdir grep -E '^##[+#] (.+)$' "{}" \; | sed -Ee 's/^##[+#] //;'
+find "$HOME/git-shell-commands" -xdev -mindepth 1 -maxdepth 1 -type f -execdir sed -Ee 's/^##[#+]( |$)//; t; d;' "{}" +

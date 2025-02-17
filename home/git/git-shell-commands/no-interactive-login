@@ -2,7 +2,7 @@
 >&2 printf '%s\n' "Hello there!" \
                   "You've successfully authenticated, but I do not provide an interactive shell." \
                   "" \
-                  "See \`help' command to get more information." \
+                  "Use \`help' command to get more information." \
                   "" \
                   "See you next time!"
 exit 128
